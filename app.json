@@ -1,15 +1,16 @@
 {
   "id": "com.darqeth.f1tracker",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "compatibility": ">=12.1.0",
   "sdk": 3,
   "name": {
     "en": "F1 Tracker+",
     "nl": "F1 Tracker+"
   },
+  "icon": "https://www.svgrepo.com/download/320095/f1-car.svg",
   "description": {
-    "en": "Advanced Formula 1 tracking with dashboard variables",
-    "nl": "Geavanceerde Formule 1 tracker met dashboard variables"
+    "en": "Advanced Formula 1 tracking",
+    "nl": "Geavanceerde Formule 1 tracker"
   },
   "category": "tools",
   "author": {
@@ -439,6 +440,7 @@
           "en": "The race starts now",
           "nl": "De race begint nu"
         },
+        "icon": "https://www.svgrepo.com/download/320095/f1-car.svg",
         "tokens": [
           {
             "name": "session_type",
@@ -1174,179 +1176,5 @@
         "id": "get_next_session"
       }
     ]
-  },
-  "drivers": [
-    {
-      "name": {
-        "en": "F1 Round",
-        "nl": "F1 Ronde"
-      },
-      "class": "sensor",
-      "capabilities": [
-        "f1_round",
-        "f1_gp_name",
-        "f1_country",
-        "f1_locality",
-        "f1_circuit",
-        "f1_fp1",
-        "f1_fp2_or_sq",
-        "f1_fp3_or_sprint",
-        "f1_quali",
-        "f1_race",
-        "f1_next_session_name",
-        "f1_next_session_local",
-        "f1_seconds_until_next"
-      ],
-      "settings": [
-        {
-          "id": "refresh_interval_seconds",
-          "type": "number",
-          "label": {
-            "en": "Refresh interval (seconds)",
-            "nl": "Ververs interval (seconden)"
-          },
-          "value": 300,
-          "min": 30,
-          "max": 3600
-        }
-      ],
-      "images": {
-        "small": "/drivers/f1_round/assets/images/small.png",
-        "large": "/drivers/f1_round/assets/images/large.png"
-      },
-      "id": "f1_round"
-    }
-  ],
-  "capabilities": {
-    "f1_circuit": {
-      "type": "string",
-      "title": {
-        "en": "Circuit",
-        "nl": "Circuit"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor"
-    },
-    "f1_country": {
-      "type": "string",
-      "title": {
-        "en": "Country",
-        "nl": "Land"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor"
-    },
-    "f1_fp1": {
-      "type": "string",
-      "title": {
-        "en": "FP1 (local)",
-        "nl": "VT1 (lokaal)"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor"
-    },
-    "f1_fp2_or_sq": {
-      "type": "string",
-      "title": {
-        "en": "FP2 or Sprint Qualifying (local)",
-        "nl": "VT2 of Sprint Kwalificatie (lokaal)"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor"
-    },
-    "f1_fp3_or_sprint": {
-      "type": "string",
-      "title": {
-        "en": "FP3 or Sprint (local)",
-        "nl": "VT3 of Sprint (lokaal)"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor"
-    },
-    "f1_gp_name": {
-      "type": "string",
-      "title": {
-        "en": "Grand Prix",
-        "nl": "Grand Prix"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor"
-    },
-    "f1_locality": {
-      "type": "string",
-      "title": {
-        "en": "City",
-        "nl": "Stad"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor"
-    },
-    "f1_next_session_local": {
-      "type": "string",
-      "title": {
-        "en": "Next session time (local)",
-        "nl": "Volgende sessie tijd (lokaal)"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor"
-    },
-    "f1_next_session_name": {
-      "type": "string",
-      "title": {
-        "en": "Next session",
-        "nl": "Volgende sessie"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor"
-    },
-    "f1_quali": {
-      "type": "string",
-      "title": {
-        "en": "Qualifying (local)",
-        "nl": "Kwalificatie (lokaal)"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor"
-    },
-    "f1_race": {
-      "type": "string",
-      "title": {
-        "en": "Race (local)",
-        "nl": "Race (lokaal)"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor"
-    },
-    "f1_round": {
-      "type": "number",
-      "title": {
-        "en": "Round",
-        "nl": "Ronde"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor"
-    },
-    "f1_seconds_until_next": {
-      "type": "number",
-      "title": {
-        "en": "Seconds until next session",
-        "nl": "Seconden tot volgende sessie"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor"
-    }
   }
 }
