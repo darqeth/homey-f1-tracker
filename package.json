@@ -1,0 +1,12 @@
+{
+  "name": "com.darqeth.f1tracker",
+  "version": "0.2.0",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "validate": "homey app validate"
+  },
+  "dependencies": {
+    "homey": "^3.0.0"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "title": {
+    "en": "FP1 (local)",
+    "nl": "VT1 (lokaal)"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor"
+}

@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "title": {
+    "en": "Next session time (local)",
+    "nl": "Volgende sessie tijd (lokaal)"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor"
+}

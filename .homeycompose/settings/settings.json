@@ -1,0 +1,76 @@
+[
+  {
+    "id": "season",
+    "type": "dropdown",
+    "label": {
+      "en": "Season",
+      "nl": "Seizoen"
+    },
+    "value": "current",
+    "values": [
+      {
+        "id": "current",
+        "label": {
+          "en": "Current",
+          "nl": "Huidig"
+        }
+      },
+      {
+        "id": "2026",
+        "label": {
+          "en": "2026",
+          "nl": "2026"
+        }
+      },
+      {
+        "id": "2025",
+        "label": {
+          "en": "2025",
+          "nl": "2025"
+        }
+      }
+    ]
+  },
+  {
+    "id": "schedule_cache_hours",
+    "type": "number",
+    "label": {
+      "en": "Schedule cache (hours)",
+      "nl": "Schema cache (uren)"
+    },
+    "value": 6,
+    "min": 1,
+    "max": 48
+  },
+  {
+    "id": "poll_seconds",
+    "type": "number",
+    "label": {
+      "en": "Poll interval (seconds)",
+      "nl": "Poll interval (seconden)"
+    },
+    "value": 30,
+    "min": 5,
+    "max": 300
+  },
+  {
+    "id": "fast_poll_before_minutes",
+    "type": "number",
+    "label": {
+      "en": "Fast poll X minutes before start",
+      "nl": "Snelle poll X minuten voor start"
+    },
+    "value": 10,
+    "min": 0,
+    "max": 120
+  },
+  {
+    "id": "use_local_time",
+    "type": "checkbox",
+    "label": {
+      "en": "Convert to local time",
+      "nl": "Omzetten naar lokale tijd"
+    },
+    "value": true
+  }
+]

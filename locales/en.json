@@ -1,0 +1,6 @@
+{
+  "app": {
+    "name": "F1 Tracker (Jolpica)",
+    "description": "Formula 1 schedule tracking via Jolpica Ergast-compatible API."
+  }
+}

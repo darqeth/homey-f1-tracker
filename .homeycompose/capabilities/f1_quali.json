@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "title": {
+    "en": "Qualifying (local)",
+    "nl": "Kwalificatie (lokaal)"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor"
+}

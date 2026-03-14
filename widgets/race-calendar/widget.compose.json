@@ -1,0 +1,133 @@
+{
+  "name": {
+    "en": "F1 Race Calendar",
+    "nl": "F1 Race Kalender"
+  },
+  "description": {
+    "en": "Show multiple races at once. Finished races are red and show winner if available.",
+    "nl": "Toon meerdere races tegelijk. Afgelopen races worden rood en tonen winnaar als beschikbaar."
+  },
+  "settings": [
+    {
+      "id": "mode",
+      "type": "dropdown",
+      "label": {
+        "en": "Which races",
+        "nl": "Welke races"
+      },
+      "value": "all",
+      "values": [
+        {
+          "id": "all",
+          "label": {
+            "en": "All races (season)",
+            "nl": "Alle races (seizoen)"
+          }
+        },
+        {
+          "id": "next",
+          "label": {
+            "en": "Next N races",
+            "nl": "Volgende N races"
+          }
+        },
+        {
+          "id": "range",
+          "label": {
+            "en": "Round range",
+            "nl": "Ronde bereik"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nextCount",
+      "type": "number",
+      "label": {
+        "en": "N (for Next N)",
+        "nl": "N (voor volgende N)"
+      },
+      "value": 8,
+      "min": 1,
+      "max": 30
+    },
+    {
+      "id": "roundFrom",
+      "type": "number",
+      "label": {
+        "en": "From round",
+        "nl": "Vanaf ronde"
+      },
+      "value": 1,
+      "min": 1,
+      "max": 30
+    },
+    {
+      "id": "roundTo",
+      "type": "number",
+      "label": {
+        "en": "To round",
+        "nl": "Tot ronde"
+      },
+      "value": 24,
+      "min": 1,
+      "max": 30
+    },
+    {
+      "id": "autoRefreshSeconds",
+      "type": "number",
+      "label": {
+        "en": "Auto refresh (seconds)",
+        "nl": "Auto refresh (seconden)"
+      },
+      "value": 300,
+      "min": 30,
+      "max": 3600
+    },
+    {
+      "id": "show_raceTime",
+      "type": "boolean",
+      "label": {
+        "en": "Show race time",
+        "nl": "Toon race tijd"
+      },
+      "value": true
+    },
+    {
+      "id": "show_country",
+      "type": "boolean",
+      "label": {
+        "en": "Show country",
+        "nl": "Toon land"
+      },
+      "value": true
+    },
+    {
+      "id": "show_city",
+      "type": "boolean",
+      "label": {
+        "en": "Show city",
+        "nl": "Toon stad"
+      },
+      "value": false
+    },
+    {
+      "id": "show_circuit",
+      "type": "boolean",
+      "label": {
+        "en": "Show circuit",
+        "nl": "Toon circuit"
+      },
+      "value": true
+    },
+    {
+      "id": "show_winner",
+      "type": "boolean",
+      "label": {
+        "en": "Show winner (when finished)",
+        "nl": "Toon winnaar (na race)"
+      },
+      "value": true
+    }
+  ]
+}

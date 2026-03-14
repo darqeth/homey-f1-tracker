@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "title": {
+    "en": "FP3 or Sprint (local)",
+    "nl": "VT3 of Sprint (lokaal)"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor"
+}

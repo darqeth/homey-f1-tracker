@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "title": {
+    "en": "Country",
+    "nl": "Land"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor"
+}

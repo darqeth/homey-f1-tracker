@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "title": {
+    "en": "Race (local)",
+    "nl": "Race (lokaal)"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor"
+}
