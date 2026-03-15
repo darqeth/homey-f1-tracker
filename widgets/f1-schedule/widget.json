@@ -1,0 +1,16 @@
+{
+  "id": "f1-schedule",
+  "name": {
+    "en": "F1 Weekend Schedule",
+    "nl": "F1 Weekendschema"
+  },
+  "width": 2,
+  "height": 200,
+  "api": {
+    "schedule": {
+      "method": "GET",
+      "path": "/schedule"
+    }
+  },
+  "settings": []
+}

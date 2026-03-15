@@ -5,9 +5,34 @@
   </head>
   <body>
     <div id="app">
-      <div id="header">
-        <span id="title">F1 Constructor Standings</span>
-        <span id="updated"></span>
+      <div id="hero">
+        <div id="hero-car-wrap">
+          <img id="hero-car" alt="" />
+          <div id="hero-car-fallback"></div>
+        </div>
+        <div id="hero-detail">
+          <span id="hero-pos-badge"></span>
+          <span id="hero-team-name"></span>
+          <span id="hero-season"></span>
+          <div id="hero-points-row">
+            <span id="hero-pts"></span>
+            <span class="pts-badge">PTS</span>
+          </div>
+          <div id="hero-stats">
+            <div class="stat">
+              <span class="stat-val" id="hero-wins"></span>
+              <span class="stat-lbl">Wins</span>
+            </div>
+            <div class="stat">
+              <span class="stat-val" id="hero-podiums"></span>
+              <span class="stat-lbl">Podiums</span>
+            </div>
+            <div class="stat">
+              <span class="stat-val" id="hero-poles"></span>
+              <span class="stat-lbl">Poles</span>
+            </div>
+          </div>
+        </div>
       </div>
       <div id="list"></div>
     </div>

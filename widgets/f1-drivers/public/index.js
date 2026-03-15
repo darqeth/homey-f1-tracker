@@ -2,34 +2,105 @@
 
 const REFRESH_INTERVAL = 5 * 60 * 1000;
 
-function renderList(standings) {
-  const list = document.getElementById('list');
-  list.innerHTML = '';
+// Mapping driverId (Ergast) → F1 media CDN path segment
+const DRIVER_PHOTO = {
+  russell:          'R/GRUSSELL_George_Russell/grussell',
+  max_verstappen:   'V/MVERSTAPPEN_Max_Verstappen/mverstappen',
+  hamilton:         'H/LHAMILTON_Lewis_Hamilton/lhamilton',
+  leclerc:          'L/CLECLERC_Charles_Leclerc/cleclerc',
+  norris:           'N/LNORRIS_Lando_Norris/lnorris',
+  piastri:          'P/OPIASTRI_Oscar_Piastri/opiastri',
+  sainz:            'S/CSAINZ_Carlos_Sainz/csainz',
+  alonso:           'A/FALONSO_Fernando_Alonso/falonso',
+  stroll:           'S/LSTROLL_Lance_Stroll/lstroll',
+  gasly:            'G/PGASLY_Pierre_Gasly/pgasly',
+  ocon:             'O/EOCON_Esteban_Ocon/eocon',
+  albon:            'A/AALBON_Alexander_Albon/aalbon',
+  bottas:           'B/VBOTTAS_Valtteri_Bottas/vbottas',
+  zhou:             'Z/GZHOU_Guanyu_Zhou/gzhou',
+  hulkenberg:       'H/NHULKENBERG_Nico_Hulkenberg/nhulkenberg',
+  kevin_magnussen:  'M/KMAGNUSSEN_Kevin_Magnussen/kmagnussen',
+  tsunoda:          'T/YTSUNODA_Yuki_Tsunoda/ytsunoda',
+  ricciardo:        'R/DRICCIARDO_Daniel_Ricciardo/dricciardo',
+  lawson:           'L/LLAWSON_Liam_Lawson/llawson',
+  bearman:          'B/OBEARMAN_Oliver_Bearman/obearman',
+  colapinto:        'C/FCOLAPINTO_Franco_Colapinto/fcolapinto',
+  doohan:           'D/JDOOHAN_Jack_Doohan/jdoohan',
+  bortoleto:        'B/GBORTOLETO_Gabriel_Bortoleto/gbortoleto',
+  hadjar:           'H/ISHADJAR_Isack_Hadjar/ishadjar',
+  antonelli:        'A/AANTONELLI_Kimi_Antonelli/aantonelli',
+};
 
+const PHOTO_BASE = 'https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/';
+
+function driverPhotoUrl(driverId) {
+  const path = DRIVER_PHOTO[driverId];
+  return path ? PHOTO_BASE + path + '.png.transform/1col/image.png' : null;
+}
+
+function renderStandings(standings) {
   if (!standings || standings.length === 0) {
-    list.innerHTML = '<div class="error-msg">No standings available yet.<br>Nog geen klassement beschikbaar.</div>';
+    document.getElementById('list').innerHTML =
+      '<div class="error-msg">No standings available yet.</div>';
     return;
   }
 
+  const top = standings[0];
+  const isVer = top.name.includes('Verstappen');
+
+  // ── Hero ──
+  const hero = document.getElementById('hero');
+  hero.className = isVer ? 'ver-highlight' : '';
+
+  document.getElementById('hero-pos-badge').textContent = 'Championship Leader';
+  document.getElementById('hero-firstname').textContent = top.firstName || '';
+  document.getElementById('hero-lastname').textContent = (top.lastName || top.name).toUpperCase();
+  document.getElementById('hero-team').textContent = top.constructor || '';
+  document.getElementById('hero-pts').textContent = top.points;
+  document.getElementById('hero-wins').textContent = top.wins || '0';
+  document.getElementById('hero-podiums').textContent = top.podiums || '0';
+  document.getElementById('hero-poles').textContent = top.poles || '0';
+  document.getElementById('hero-num-fallback').textContent = top.permanentNumber || top.code || '';
+
+  const img = document.getElementById('hero-photo');
+  if (top.photo) {
+    img.src = top.photo;
+    img.classList.remove('hidden');
+    img.onerror = () => img.classList.add('hidden');
+  } else {
+    img.classList.add('hidden');
+  }
+
+  // ── List ──
+  const list = document.getElementById('list');
+  list.innerHTML = '';
+
   const podiumClass = ['top1', 'top2', 'top3'];
-  const badgeClass = ['gold', 'silver', 'bronze'];
+  const badgeClass  = ['gold', 'silver', 'bronze'];
 
   for (const entry of standings) {
-    const pos = Number(entry.position);
+    const pos      = Number(entry.position);
     const isPodium = pos <= 3;
+    const isVerRow = entry.name.includes('Verstappen');
 
     const row = document.createElement('div');
-    const isVer = entry.name.includes('Verstappen');
-    row.className = 'standing-row' + (isPodium ? ' ' + podiumClass[pos - 1] : '') + (isVer ? ' ver-highlight' : '');
+    row.className = 'standing-row'
+      + (isPodium ? ' ' + podiumClass[pos - 1] : '')
+      + (isVerRow ? ' ver-highlight' : '');
 
     const badgeCls = isPodium ? badgeClass[pos - 1] : 'normal';
-    const posEl = `<span class="pos-badge ${badgeCls}">${pos}</span>`;
-    const nameEl = `<span class="driver-name">${entry.name}</span>`;
-    const conEl = `<span class="constructor-name">${entry.constructor || ''}</span>`;
-    const ptsEl = `<span class="points">${entry.points}</span>`;
-    const lblEl = `<span class="pts-label">pts</span>`;
 
-    row.innerHTML = posEl + nameEl + conEl + ptsEl + lblEl;
+    row.innerHTML =
+      `<span class="pos-badge ${badgeCls}">${pos}</span>` +
+      `<div class="driver-info">` +
+        `<span class="driver-name">${entry.name}</span>` +
+        `<span class="constructor-name">${entry.constructor || ''}</span>` +
+      `</div>` +
+      `<div class="points-wrap">` +
+        `<span class="points">${entry.points}</span>` +
+        `<span class="pts-label">pts</span>` +
+      `</div>`;
+
     list.appendChild(row);
   }
 }
@@ -37,32 +108,21 @@ function renderList(standings) {
 function onHomeyReady(Homey) {
   let readyCalled = false;
 
-  function loadStandings() {
+  function load() {
     Homey.api('GET', '/standings', {})
       .then(standings => {
-        renderList(standings);
-        const now = new Date();
-        document.getElementById('updated').textContent =
-          now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
+        renderStandings(standings);
         const height = document.body.scrollHeight;
-        if (!readyCalled) {
-          Homey.ready({ height });
-          readyCalled = true;
-        } else {
-          Homey.setHeight(height);
-        }
+        if (!readyCalled) { Homey.ready({ height }); readyCalled = true; }
+        else Homey.setHeight(height);
       })
       .catch(() => {
         document.getElementById('list').innerHTML =
-          '<div class="error-msg">Could not load standings.<br>Check app connection.</div>';
-        if (!readyCalled) {
-          Homey.ready({ height: 120 });
-          readyCalled = true;
-        }
+          '<div class="error-msg">Could not load standings.</div>';
+        if (!readyCalled) { Homey.ready({ height: 120 }); readyCalled = true; }
       });
   }
 
-  loadStandings();
-  setInterval(loadStandings, REFRESH_INTERVAL);
+  load();
+  setInterval(load, REFRESH_INTERVAL);
 }

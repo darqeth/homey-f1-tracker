@@ -1,12 +1,6 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-html, body {
-  overflow: hidden;
-}
+html, body { overflow: hidden; }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -15,146 +9,157 @@ body {
   font-size: 12px;
 }
 
-#app {
+#app { display: flex; flex-direction: column; }
+
+/* ── Hero card ── */
+#hero {
   display: flex;
-  flex-direction: column;
+  align-items: stretch;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
 }
 
-#header {
+#hero-car-wrap {
+  width: 130px;
+  flex-shrink: 0;
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 8px 10px;
-  border-bottom: 2px solid #e10600;
-  flex-shrink: 0;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 110px;
+  padding: 8px;
 }
 
-#title {
-  font-size: 12px;
+#hero-car {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+#hero-car.hidden { display: none; }
+
+#hero-car-fallback {
+  display: none; /* shown only when car image fails */
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.8px;
-  color: #e10600;
+  color: rgba(255, 255, 255, 0.15);
+  text-align: center;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 
-#updated {
-  font-size: 9px;
-  color: rgba(255, 255, 255, 0.35);
+#hero-detail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px 10px 10px;
+  gap: 1px;
+  justify-content: center;
+  min-width: 0;
 }
 
-#list {
-  scrollbar-width: thin;
-  scrollbar-color: #e10600 transparent;
+#hero-pos-badge {
+  font-size: 9px;
+  font-weight: 800;
+  color: #e10600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
 }
+
+#hero-team-name {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  line-height: 1.1;
+}
+
+#hero-season {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 1px;
+  margin-bottom: 6px;
+}
+
+#hero-points-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+#hero-pts {
+  font-size: 28px;
+  font-weight: 900;
+  color: #e10600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.pts-badge {
+  font-size: 9px;
+  font-weight: 700;
+  background: rgba(225, 6, 0, 0.2);
+  color: #e10600;
+  padding: 2px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+}
+
+#hero-stats {
+  display: flex;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.stat { display: flex; flex-direction: column; align-items: center; gap: 1px; }
+.stat-val { font-size: 14px; font-weight: 800; color: #fff; line-height: 1; }
+.stat-lbl { font-size: 8px; color: rgba(255, 255, 255, 0.35); letter-spacing: 0.3px; }
+
+/* ── Standings list ── */
+#list { display: flex; flex-direction: column; }
 
 .standing-row {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 5px 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 6px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   border-left: 3px solid transparent;
 }
 
-.standing-row.top1 {
-  background: rgba(232, 185, 35, 0.08);
-  border-left-color: #e8b923;
-}
-
-.standing-row.top2 {
-  background: rgba(184, 196, 204, 0.06);
-  border-left-color: #b8c4cc;
-}
-
-.standing-row.top3 {
-  background: rgba(212, 115, 42, 0.07);
-  border-left-color: #d4732a;
-}
+.standing-row.top1 { background: rgba(232,185,35,0.07); border-left-color: #e8b923; }
+.standing-row.top2 { background: rgba(184,196,204,0.05); border-left-color: #b8c4cc; }
+.standing-row.top3 { background: rgba(212,115,42,0.06);  border-left-color: #d4732a; }
 
 .pos-badge {
-  font-size: 9px;
-  font-weight: 700;
-  padding: 2px 5px;
-  border-radius: 3px;
-  flex-shrink: 0;
-  min-width: 22px;
-  text-align: center;
-  letter-spacing: 0.5px;
+  font-size: 9px; font-weight: 700; padding: 2px 5px; border-radius: 3px;
+  flex-shrink: 0; min-width: 22px; text-align: center; letter-spacing: 0.5px;
 }
-
-.pos-badge.gold {
-  background: #e8b923;
-  color: #6b3d00;
-  border-top: 1px solid rgba(255, 255, 255, 0.45);
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-}
-
-.pos-badge.silver {
-  background: #b8c4cc;
-  color: #3a4e5c;
-  border-top: 1px solid rgba(255, 255, 255, 0.45);
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-}
-
-.pos-badge.bronze {
-  background: #d4732a;
-  color: #66200a;
-  border-top: 1px solid rgba(255, 255, 255, 0.45);
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-}
-
-.pos-badge.normal {
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.5);
-}
+.pos-badge.gold   { background: #e8b923; color: #6b3d00; }
+.pos-badge.silver { background: #b8c4cc; color: #3a4e5c; }
+.pos-badge.bronze { background: #d4732a; color: #66200a; }
+.pos-badge.normal { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
 
 .team-name {
-  flex: 1;
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 12px;
-  min-width: 0;
+  flex: 1; font-size: 12px; font-weight: 600;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-
 .standing-row.top1 .team-name,
 .standing-row.top2 .team-name,
-.standing-row.top3 .team-name {
-  font-weight: 700;
-}
+.standing-row.top3 .team-name { font-weight: 700; }
 
-.points {
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
-  flex-shrink: 0;
-  text-align: right;
-  min-width: 28px;
-}
-
+.points-wrap { display: flex; align-items: baseline; gap: 2px; flex-shrink: 0; }
+.points { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.8); }
 .standing-row.top1 .points,
 .standing-row.top2 .points,
-.standing-row.top3 .points {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.pts-label {
-  font-size: 8px;
-  color: rgba(255, 255, 255, 0.25);
-  flex-shrink: 0;
-}
+.standing-row.top3 .points { color: #fff; }
+.pts-label { font-size: 8px; color: rgba(255,255,255,0.25); }
 
 .error-msg {
-  padding: 24px 12px;
-  color: rgba(255, 255, 255, 0.35);
-  text-align: center;
-  font-size: 11px;
-  line-height: 1.5;
+  padding: 24px 12px; color: rgba(255,255,255,0.35);
+  text-align: center; font-size: 11px; line-height: 1.5;
 }
