@@ -31,5 +31,8 @@
   },
   "1.1.1": {
     "en": "Hotfix: prevent widgets from capturing scroll events on mobile, so the Homey dashboard scrolls normally when swiping over a widget."
+  },
+  "1.1.2": {
+    "en": "Fix: 'starts now' triggers (race, qualifying, session, etc.) now fire correctly. Sessions that just started were incorrectly dropped from the scheduler lookup before the trigger could evaluate them."
   }
 }
