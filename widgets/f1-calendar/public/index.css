@@ -88,6 +88,17 @@ body {
   padding-left: 7px;
 }
 
+.race-row.dutch-gp {
+  border-left-color: rgba(255, 135, 0, 0.6);
+  background: rgba(255, 135, 0, 0.04);
+}
+
+.winner-badge.ver-highlight,
+.sprint-winner-badge.ver-highlight {
+  outline: 1px solid rgba(255, 135, 0, 0.7);
+  outline-offset: 1px;
+}
+
 .round {
   font-size: 9px;
   color: rgba(255, 255, 255, 0.4);

@@ -19,7 +19,8 @@ function renderList(standings) {
     const isPodium = pos <= 3;
 
     const row = document.createElement('div');
-    row.className = 'standing-row' + (isPodium ? ' ' + podiumClass[pos - 1] : '');
+    const isVer = entry.name.includes('Verstappen');
+    row.className = 'standing-row' + (isPodium ? ' ' + podiumClass[pos - 1] : '') + (isVer ? ' ver-highlight' : '');
 
     const badgeCls = isPodium ? badgeClass[pos - 1] : 'normal';
     const posEl = `<span class="pos-badge ${badgeCls}">${pos}</span>`;

@@ -19,6 +19,7 @@ function renderList(races) {
     if (race.isCancelled) cls.push('cancelled');
     else if (race.isPast) cls.push('past');
     else if (race.isNext) cls.push('next');
+    if (race.country === 'Netherlands') cls.push('dutch-gp');
     row.className = cls.join(' ');
 
     const date = race.date ? new Date(race.date) : null;
@@ -30,13 +31,17 @@ function renderList(races) {
 
     const roundEl = `<span class="round">${race.isCancelled ? '–' : String(race.round).padStart(2, '0')}</span>`;
     const sprintBadge = race.isSprint
-      ? `<span class="sprint-badge${race.isSprintPast ? ' past' : ''}">Sprint</span>${race.sprintWinner ? `<span class="sprint-winner-badge">${race.sprintWinner}</span>` : ''}`
+      ? `<span class="sprint-badge${race.isSprintPast ? ' past' : ''}">Sprint</span>${race.sprintWinner ? `<span class="sprint-winner-badge${race.sprintWinner === 'VER' ? ' ver-highlight' : ''}">${race.sprintWinner}</span>` : ''}`
       : '';
     const nameGroupEl = `<div class="name-group"><span class="name">${gpName}</span>${sprintBadge}</div>`;
     const dateEl = `<span class="date">${dateStr}</span>`;
     const podiumClasses = ['gold', 'silver', 'bronze'];
     const winnerEl = (race.top3 || [])
-      .map((code, i) => code ? `<span class="winner-badge ${podiumClasses[i]}">${code}</span>` : '')
+      .map((code, i) => {
+        if (!code) return '';
+        const ver = code === 'VER' ? ' ver-highlight' : '';
+        return `<span class="winner-badge ${podiumClasses[i]}${ver}">${code}</span>`;
+      })
       .join('');
 
     row.innerHTML = roundEl + nameGroupEl + dateEl + winnerEl;

@@ -22,7 +22,8 @@ function renderPodium(standings) {
     const displayName = entry.code || entry.name.split(' ').pop().substring(0, 3).toUpperCase();
 
     const slot = document.createElement('div');
-    slot.className = `slot ${cls}`;
+    const isVer = entry.name.includes('Verstappen');
+    slot.className = `slot ${cls}` + (isVer ? ' ver-highlight' : '');
     slot.innerHTML = `
       <div class="info">
         <div class="driver-code">${displayName}</div>
