@@ -40,5 +40,8 @@
   },
   "1.1.4": {
     "en": "Fix: calendar widget now shows podium badges immediately after a race. Result caches are cleared when race_finished fires, and empty caches retry after 5 minutes instead of waiting 6 hours."
+  },
+  "1.1.5": {
+    "en": "Add subtle orange highlight for the Dutch GP row in the calendar, and for Max Verstappen in driver standings and podium widgets."
   }
 }
