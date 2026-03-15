@@ -28,5 +28,8 @@
   },
   "1.1.0": {
     "en": "Add five new dashboard widgets: flip-clock race countdown, driver standings, constructor standings, drivers podium (top 3), constructors podium (top 3). Fix cancelled race display in calendar (scribble strikethrough, correct sort order). Fix flip-clock animation timing. Update author info and descriptions."
+  },
+  "1.1.1": {
+    "en": "Hotfix: prevent widgets from capturing scroll events on mobile, so the Homey dashboard scrolls normally when swiping over a widget."
   }
 }
