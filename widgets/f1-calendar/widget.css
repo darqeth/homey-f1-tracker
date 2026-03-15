@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--homey-background-color, #111);
+  color: var(--homey-text-color, #fff);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-bottom: 2px solid #e10600;
+  flex-shrink: 0;
+}
+
+#title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #e10600;
+  text-transform: uppercase;
+}
+
+#updated {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+#list {
+  overflow-y: auto;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: #e10600 transparent;
+}
+
+.race-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 3px solid transparent;
+}
+
+.race-row.past {
+  opacity: 0.5;
+}
+
+.race-row.next {
+  opacity: 1;
+  background: rgba(225, 6, 0, 0.1);
+  border-left-color: #e10600;
+  padding-left: 7px;
+}
+
+.round {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.4);
+  min-width: 16px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.name {
+  flex: 1;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 11px;
+}
+
+.race-row.next .name {
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.date {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.45);
+  flex-shrink: 0;
+  min-width: 40px;
+  text-align: right;
+}
+
+.race-row.next .date {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.winner-badge {
+  font-size: 9px;
+  font-weight: 700;
+  background: #27ae60;
+  color: #fff;
+  padding: 2px 5px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  min-width: 30px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.error-msg {
+  padding: 24px 12px;
+  color: rgba(255, 255, 255, 0.35);
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.5;
+}

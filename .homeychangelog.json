@@ -6,12 +6,27 @@
     "en": "first test version"
   },
   "0.2.3": {
-    "en": "removed widgets and updated incons."
+    "en": "removed widgets and updated icons."
   },
   "0.2.4": {
     "en": "Small changes"
   },
   "0.2.5": {
-    "en": "testing flow icons and removed \"devices\" from the app."
+    "en": "testing flow icons and removed devices from the app."
+  },
+  "1.0.0": {
+    "en": "Initial release of F1 Tracker Pro. Adds notifications for all F1 session types (FP1/2/3, Qualifying, Sprint, Race), race finished trigger with winner, dashboard winner variables per round, and driver/constructor standings actions."
+  },
+  "1.0.1": {
+    "en": "Remove seconds from time unit options, fix start time to use user timezone, clean up and rename action tokens."
+  },
+  "1.0.2": {
+    "en": "Add F1 Calendar dashboard widget: full season schedule with gold/silver/bronze podium badges per race."
+  },
+  "1.0.7": {
+    "en": "Fix widget rendering: use public/ folder and onHomeyReady pattern."
+  },
+  "1.1.0": {
+    "en": "Add five new dashboard widgets: flip-clock race countdown, driver standings, constructor standings, drivers podium (top 3), constructors podium (top 3). Fix cancelled race display in calendar (scribble strikethrough, correct sort order). Fix flip-clock animation timing. Update author info and descriptions."
   }
 }

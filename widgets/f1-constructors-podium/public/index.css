@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--homey-background-color, #111);
+  color: var(--homey-text-color, #fff);
+  font-size: 12px;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-bottom: 2px solid #e10600;
+  flex-shrink: 0;
+}
+
+#title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #e10600;
+  text-transform: uppercase;
+}
+
+#updated {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+#podium {
+  display: flex;
+  align-items: flex-end;
+  padding: 14px 16px 0;
+  gap: 5px;
+}
+
+.slot {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info {
+  text-align: center;
+  padding-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.team-name {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.slot.gold .team-name   { color: #e8b923; }
+.slot.silver .team-name { color: #b8c4cc; }
+.slot.bronze .team-name { color: #d4732a; }
+
+.team-pts {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.step {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.slot.gold .step {
+  height: 72px;
+  background: linear-gradient(180deg, #e8b923 0%, #b8890d 100%);
+  color: #5c3300;
+  border-top: 2px solid rgba(255, 255, 255, 0.55);
+  border-left: 2px solid rgba(255, 255, 255, 0.35);
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.slot.silver .step {
+  height: 52px;
+  background: linear-gradient(180deg, #b8c4cc 0%, #8a9aa3 100%);
+  color: #2a3d4a;
+  border-top: 2px solid rgba(255, 255, 255, 0.55);
+  border-left: 2px solid rgba(255, 255, 255, 0.35);
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.slot.bronze .step {
+  height: 36px;
+  background: linear-gradient(180deg, #d4732a 0%, #a04e15 100%);
+  color: #4a1500;
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.error-msg {
+  padding: 24px 12px;
+  color: rgba(255, 255, 255, 0.35);
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.5;
+}

@@ -1,0 +1,197 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--homey-background-color, #111);
+  color: var(--homey-text-color, #fff);
+  font-size: 12px;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-bottom: 2px solid #e10600;
+  flex-shrink: 0;
+}
+
+#title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #e10600;
+  text-transform: uppercase;
+}
+
+#updated {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+#list {
+  scrollbar-width: thin;
+  scrollbar-color: #e10600 transparent;
+}
+
+.race-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 3px solid transparent;
+}
+
+.race-row.past .round,
+.race-row.past .name,
+.race-row.past .date {
+  opacity: 0.45;
+}
+
+.race-row.cancelled {
+  position: relative;
+  opacity: 0.45;
+}
+
+.race-row.cancelled::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 10px;
+  transform: translateY(-50%);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 10'%3E%3Cpath d='M0,5 C6,2 13,8 22,4 C30,1 38,7 48,5 C56,2 65,8 74,4 C82,1 91,7 100,5 C107,3 114,7 120,5' stroke='%23e10600' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M0,6 C8,3 17,9 26,6 C34,3 43,8 52,5 C61,2 69,7 78,5 C87,3 96,8 105,5 C111,3 117,6 120,5' stroke='%23e10600' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round' opacity='0.55'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 120px 10px;
+  pointer-events: none;
+}
+
+.race-row.next {
+  opacity: 1;
+  background: rgba(225, 6, 0, 0.1);
+  border-left-color: #e10600;
+  padding-left: 7px;
+}
+
+.round {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.4);
+  min-width: 16px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.name-group {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.name {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  min-width: 0;
+}
+
+.race-row.next .name {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.date {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  flex-shrink: 0;
+  min-width: 40px;
+  text-align: right;
+}
+
+.race-row.next .date {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.winner-badge {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  min-width: 28px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  border-top: 1px solid rgba(255, 255, 255, 0.45);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+
+.winner-badge.gold {
+  background: #e8b923;
+  color: #6b3d00;
+}
+
+.winner-badge.silver {
+  background: #b8c4cc;
+  color: #3a4e5c;
+}
+
+.winner-badge.bronze {
+  background: #d4732a;
+  color: #66200a;
+}
+
+.sprint-badge {
+  font-size: 9px;
+  font-weight: 700;
+  background: #8e44ad;
+  color: #fff;
+  padding: 2px 5px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  text-align: center;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.sprint-badge.past {
+  opacity: 0.45;
+}
+
+.sprint-winner-badge {
+  font-size: 9px;
+  font-weight: 700;
+  background: #6c3483;
+  color: #fff;
+  padding: 2px 5px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  text-align: center;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.error-msg {
+  padding: 24px 12px;
+  color: rgba(255, 255, 255, 0.35);
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.5;
+}

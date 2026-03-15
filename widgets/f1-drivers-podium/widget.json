@@ -1,0 +1,16 @@
+{
+  "id": "f1-drivers-podium",
+  "name": {
+    "en": "F1 Drivers Podium",
+    "nl": "F1 Rijders Podium"
+  },
+  "width": 2,
+  "height": 185,
+  "api": {
+    "standings": {
+      "method": "GET",
+      "path": "/standings"
+    }
+  },
+  "settings": []
+}

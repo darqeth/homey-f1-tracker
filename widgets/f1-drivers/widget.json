@@ -1,0 +1,16 @@
+{
+  "id": "f1-drivers",
+  "name": {
+    "en": "F1 Drivers",
+    "nl": "F1 Rijders"
+  },
+  "width": 2,
+  "height": 400,
+  "api": {
+    "standings": {
+      "method": "GET",
+      "path": "/standings"
+    }
+  },
+  "settings": []
+}

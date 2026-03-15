@@ -1,0 +1,16 @@
+{
+  "id": "f1-constructors",
+  "name": {
+    "en": "F1 Constructors",
+    "nl": "F1 Constructeurs"
+  },
+  "width": 2,
+  "height": 300,
+  "api": {
+    "standings": {
+      "method": "GET",
+      "path": "/standings"
+    }
+  },
+  "settings": []
+}

@@ -1,0 +1,16 @@
+{
+  "id": "f1-constructors-podium",
+  "name": {
+    "en": "F1 Constructors Podium",
+    "nl": "F1 Constructeurs Podium"
+  },
+  "width": 2,
+  "height": 185,
+  "api": {
+    "standings": {
+      "method": "GET",
+      "path": "/standings"
+    }
+  },
+  "settings": []
+}

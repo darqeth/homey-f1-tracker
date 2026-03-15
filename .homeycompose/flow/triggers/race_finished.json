@@ -1,0 +1,13 @@
+{
+  "title": {
+    "en": "A race has finished",
+    "nl": "Een race is afgelopen"
+  },
+  "icon": "/assets/icon.svg",
+  "tokens": [
+    { "name": "winner_name",        "type": "string", "title": { "en": "Winner",       "nl": "Winnaar" } },
+    { "name": "winner_constructor", "type": "string", "title": { "en": "Constructor",  "nl": "Constructeur" } },
+    { "name": "gp_name",            "type": "string", "title": { "en": "Grand Prix",   "nl": "Grand Prix" } },
+    { "name": "round",              "type": "string", "title": { "en": "Round",        "nl": "Ronde" } }
+  ]
+}

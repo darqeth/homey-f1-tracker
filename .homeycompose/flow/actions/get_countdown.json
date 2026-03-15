@@ -1,0 +1,9 @@
+{
+  "title": {
+    "en": "Get session countdown",
+    "nl": "Haal sessie countdown op"
+  },
+  "tokens": [
+    { "name": "countdown_string", "type": "string", "title": { "en": "Countdown", "nl": "Afteltijd" } }
+  ]
+}

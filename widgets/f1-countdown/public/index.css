@@ -1,0 +1,200 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--homey-background-color, #111);
+  color: var(--homey-text-color, #fff);
+  font-size: 12px;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ── */
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-bottom: 2px solid #e10600;
+}
+
+#title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #e10600;
+  text-transform: uppercase;
+}
+
+#round-badge {
+  font-size: 9px;
+  font-weight: 700;
+  background: #e10600;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+  display: none;
+}
+
+#round-badge.visible {
+  display: inline-block;
+}
+
+/* ── Race info bar ── */
+#race-bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 7px 10px 5px;
+  gap: 6px;
+}
+
+#race-name {
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+#race-date {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+}
+
+/* ── Clock container ── */
+#clock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 12px 14px;
+}
+
+.unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.digits {
+  display: flex;
+  gap: 3px;
+}
+
+.unit-label {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.sep {
+  font-size: 30px;
+  font-weight: 900;
+  color: #e10600;
+  line-height: 1;
+  padding-bottom: 18px; /* align with top of digits */
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* ── Flip card ── */
+.flip-card {
+  position: relative;
+  width: 34px;
+  height: 50px;
+  perspective: 180px;
+}
+
+/* Shared face styles */
+.s-top, .s-bot, .a-top, .a-bot {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+  background: #1c1c1e;
+  display: flex;
+  justify-content: center;
+}
+
+.s-top, .a-top {
+  top: 0;
+  border-radius: 5px 5px 0 0;
+  align-items: flex-end;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.s-bot, .a-bot {
+  bottom: 0;
+  border-radius: 0 0 5px 5px;
+  align-items: flex-start;
+  border-top: 1px solid rgba(0, 0, 0, 0.7);
+}
+
+.flip-card span {
+  font-size: 34px;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+  line-height: 1;
+  position: absolute;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.s-top span, .a-top span { bottom: 0; transform: translateY(50%); }
+.s-bot span, .a-bot span { top: 0;    transform: translateY(-50%); }
+
+/* Animated halves sit on top */
+.a-top {
+  z-index: 2;
+  transform-origin: 50% 100%;
+  backface-visibility: hidden;
+}
+
+.a-bot {
+  z-index: 2;
+  transform-origin: 50% 0%;
+  backface-visibility: hidden;
+}
+
+@keyframes flipTop {
+  from { transform: rotateX(0deg);    }
+  to   { transform: rotateX(-90deg);  }
+}
+
+@keyframes flipBot {
+  from { transform: rotateX(90deg);   }
+  to   { transform: rotateX(0deg);    }
+}
+
+/* ── Race-is-live state ── */
+#clock.live .flip-card span {
+  color: #e10600;
+}
+
+#clock.live .sep {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── Error / empty ── */
+.error-msg {
+  padding: 24px 12px;
+  color: rgba(255, 255, 255, 0.35);
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.5;
+}

@@ -1,0 +1,13 @@
+{
+  "title": {
+    "en": "Get driver standings",
+    "nl": "Haal rijderskampioenschap op"
+  },
+  "tokens": [
+    { "name": "leader_name",        "type": "string", "title": { "en": "Leader name",        "nl": "Leider naam" } },
+    { "name": "leader_points",      "type": "string", "title": { "en": "Leader points",      "nl": "Leider punten" } },
+    { "name": "leader_constructor", "type": "string", "title": { "en": "Leader constructor", "nl": "Leider constructeur" } },
+    { "name": "second_name",        "type": "string", "title": { "en": "2nd place name",     "nl": "2e naam" } },
+    { "name": "second_points",      "type": "string", "title": { "en": "2nd place points",   "nl": "2e punten" } }
+  ]
+}

@@ -27,13 +27,6 @@
       },
       "values": [
         {
-          "id": "seconds",
-          "label": {
-            "en": "seconds",
-            "nl": "seconden"
-          }
-        },
-        {
           "id": "minutes",
           "label": {
             "en": "minutes",
@@ -90,19 +83,11 @@
       }
     },
     {
-      "name": "start_local",
+      "name": "start_time",
       "type": "string",
       "title": {
-        "en": "Start (local)",
-        "nl": "Start (lokaal)"
-      }
-    },
-    {
-      "name": "start_utc",
-      "type": "string",
-      "title": {
-        "en": "Start (UTC)",
-        "nl": "Start (UTC)"
+        "en": "Start time",
+        "nl": "Starttijd"
       }
     },
     {

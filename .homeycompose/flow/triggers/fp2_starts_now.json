@@ -1,0 +1,14 @@
+{
+  "title": {
+    "en": "Free practice 2 starts now",
+    "nl": "Vrije training 2 begint nu"
+  },
+  "icon": "/assets/icon.svg",
+  "tokens": [
+    { "name": "session_type",  "type": "string", "title": { "en": "Session type",  "nl": "Sessietype" } },
+    { "name": "round",         "type": "string", "title": { "en": "Round",         "nl": "Ronde" } },
+    { "name": "gp_name",       "type": "string", "title": { "en": "Grand Prix",    "nl": "Grand Prix" } },
+    { "name": "start_time",    "type": "string", "title": { "en": "Start time",    "nl": "Starttijd" } },
+    { "name": "seconds_until", "type": "number", "title": { "en": "Seconds until", "nl": "Seconden tot start" } }
+  ]
+}

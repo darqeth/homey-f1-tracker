@@ -1,16 +1,64 @@
-# Homey F1 Tracker (Jolpica)
-Homey community app for Formula 1 schedule tracking using Jolpica Ergast-compatible API.
+# F1 Tracker Pro
 
-## Quick start
-- `npm install`
-- `homey app validate`
-- `homey app run`
+A Homey app that tracks the Formula 1 season and lets you build automations around every session — free practice, qualifying, sprint and race.
 
-## API
-Uses `https://api.jolpi.ca/ergast/f1/{season}/races.json` where season can be `current` or a year.
+Made by Mark — [byhim.nl](https://www.byhim.nl)
 
-## Flow cards
-Triggers for session start countdowns and “starts now”, conditions like “race today”, and actions like “force refresh”.
+---
 
-## Dashboards
-This app syncs Homey Logic variables (per round + next session). Add them as *Logic* tiles in Homey Dashboards.
+## Features
+
+### Flow triggers
+Set up Advanced Flows that fire before any session type:
+- **Starts in X minutes/hours** — for FP1, FP2, FP3, Qualifying, Sprint Qualifying, Sprint, Race and "next session"
+- **Starts now** — fires at the moment a session begins (60-second grace window)
+- **Race finished** — fires 2+ hours after race start once the winner is confirmed; includes `winner_name` and `winner_constructor` tokens
+
+### Flow conditions
+- Race today / sprint weekend / race this week
+- Session within X time / any session today
+
+### Flow actions
+- Get next session / next race details (includes countdown string, circuit, country, city)
+- Get driver standings top 2
+- Get constructor standings top 2
+- Force refresh API cache
+
+### Dashboard widgets
+| Widget | Description |
+|---|---|
+| F1 Countdown | Flip-clock countdown to the next race with race name and date |
+| F1 Calendar | Full season schedule with sprint badges, past/upcoming styling and podium results |
+| F1 Rijders / Drivers | Driver championship standings |
+| F1 Constructeurs / Constructors | Constructor championship standings |
+| F1 Rijders Podium | Visual podium — top 3 drivers |
+| F1 Constructeurs Podium | Visual podium — top 3 constructors |
+
+### Logic variables (dashboard tiles)
+Automatically synced on every refresh:
+- `F1 Next Session Type`, `F1 Next GP Name`, `F1 Next Session Start (Local)`, `F1 Seconds Until Next Session`
+- Per round: `F1 R{n} GP Name`, `Country`, `City`, `Circuit`, `FP1`, `FP2 or Sprint Qualifying`, `FP3 or Sprint`, `Qualifying`, `Race`, `Winner`
+
+---
+
+## App settings
+
+| Setting | Default | Description |
+|---|---|---|
+| Season | current | Current or a specific year |
+| Cache duration | 6h | How long the race schedule is cached |
+| Poll interval | 30s | How often flows are checked |
+| Fast poll window | 10min | Switches to 5s polling when a session is near |
+
+---
+
+## Development
+
+```bash
+npm install
+homey app validate
+homey app run       # live on connected Homey with logging
+homey app install   # install on connected Homey
+```
+
+Race data provided by [Jolpica](https://jolpi.ca/) (Ergast-compatible API).

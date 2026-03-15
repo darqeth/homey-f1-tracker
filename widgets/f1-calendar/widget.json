@@ -1,0 +1,16 @@
+{
+  "id": "f1-calendar",
+  "name": {
+    "en": "F1 Calendar",
+    "nl": "F1 Kalender"
+  },
+  "width": 2,
+  "height": 500,
+  "api": {
+    "calendar": {
+      "method": "GET",
+      "path": "/calendar"
+    }
+  },
+  "settings": []
+}

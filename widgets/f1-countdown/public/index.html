@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div id="header">
+        <span id="title">F1 Countdown</span>
+        <span id="round-badge"></span>
+      </div>
+      <div id="race-bar">
+        <span id="race-name">—</span>
+        <span id="race-date"></span>
+      </div>
+      <div id="clock">
+        <div class="unit">
+          <div class="digits">
+            <div class="flip-card" id="d0"></div>
+            <div class="flip-card" id="d1"></div>
+          </div>
+          <span class="unit-label" id="lbl-d">DAYS</span>
+        </div>
+        <div class="sep">:</div>
+        <div class="unit">
+          <div class="digits">
+            <div class="flip-card" id="h0"></div>
+            <div class="flip-card" id="h1"></div>
+          </div>
+          <span class="unit-label">HRS</span>
+        </div>
+        <div class="sep">:</div>
+        <div class="unit">
+          <div class="digits">
+            <div class="flip-card" id="m0"></div>
+            <div class="flip-card" id="m1"></div>
+          </div>
+          <span class="unit-label">MIN</span>
+        </div>
+        <div class="sep">:</div>
+        <div class="unit">
+          <div class="digits">
+            <div class="flip-card" id="s0"></div>
+            <div class="flip-card" id="s1"></div>
+          </div>
+          <span class="unit-label">SEC</span>
+        </div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

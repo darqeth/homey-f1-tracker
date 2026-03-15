@@ -4,53 +4,13 @@
     "nl": "Haal info op over de volgende sessie"
   },
   "tokens": [
-    {
-      "name": "session_type",
-      "type": "string",
-      "title": {
-        "en": "Session type",
-        "nl": "Sessietype"
-      }
-    },
-    {
-      "name": "round",
-      "type": "string",
-      "title": {
-        "en": "Round",
-        "nl": "Ronde"
-      }
-    },
-    {
-      "name": "gp_name",
-      "type": "string",
-      "title": {
-        "en": "Grand Prix",
-        "nl": "Grand Prix"
-      }
-    },
-    {
-      "name": "start_local",
-      "type": "string",
-      "title": {
-        "en": "Start (local)",
-        "nl": "Start (lokaal)"
-      }
-    },
-    {
-      "name": "start_utc",
-      "type": "string",
-      "title": {
-        "en": "Start (UTC)",
-        "nl": "Start (UTC)"
-      }
-    },
-    {
-      "name": "seconds_until",
-      "type": "number",
-      "title": {
-        "en": "Seconds until",
-        "nl": "Seconden tot start"
-      }
-    }
+    { "name": "next_session_type", "type": "string", "title": { "en": "Next: Session type", "nl": "Volgende: Sessietype" } },
+    { "name": "next_round",        "type": "string", "title": { "en": "Next: Round",        "nl": "Volgende: Ronde" } },
+    { "name": "next_gp_name",      "type": "string", "title": { "en": "Next: Grand Prix",   "nl": "Volgende: Grand Prix" } },
+    { "name": "next_start_time",   "type": "string", "title": { "en": "Next: Start time",   "nl": "Volgende: Starttijd" } },
+    { "name": "next_circuit",      "type": "string", "title": { "en": "Next: Circuit",      "nl": "Volgende: Circuit" } },
+    { "name": "next_country",      "type": "string", "title": { "en": "Next: Country",      "nl": "Volgende: Land" } },
+    { "name": "next_city",         "type": "string", "title": { "en": "Next: City",         "nl": "Volgende: Stad" } },
+    { "name": "next_countdown",    "type": "string", "title": { "en": "Next: Countdown",    "nl": "Volgende: Afteltijd" } }
   ]
 }

@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--homey-background-color, #111);
+  color: var(--homey-text-color, #fff);
+  font-size: 12px;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-bottom: 2px solid #e10600;
+  flex-shrink: 0;
+}
+
+#title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #e10600;
+  text-transform: uppercase;
+}
+
+#updated {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+#list {
+  scrollbar-width: thin;
+  scrollbar-color: #e10600 transparent;
+}
+
+.standing-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 3px solid transparent;
+}
+
+.standing-row.top1 {
+  background: rgba(232, 185, 35, 0.08);
+  border-left-color: #e8b923;
+}
+
+.standing-row.top2 {
+  background: rgba(184, 196, 204, 0.06);
+  border-left-color: #b8c4cc;
+}
+
+.standing-row.top3 {
+  background: rgba(212, 115, 42, 0.07);
+  border-left-color: #d4732a;
+}
+
+.pos-badge {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  min-width: 22px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.pos-badge.gold {
+  background: #e8b923;
+  color: #6b3d00;
+  border-top: 1px solid rgba(255, 255, 255, 0.45);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.pos-badge.silver {
+  background: #b8c4cc;
+  color: #3a4e5c;
+  border-top: 1px solid rgba(255, 255, 255, 0.45);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.pos-badge.bronze {
+  background: #d4732a;
+  color: #66200a;
+  border-top: 1px solid rgba(255, 255, 255, 0.45);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.pos-badge.normal {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.driver-name {
+  flex: 1;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  min-width: 0;
+}
+
+.standing-row.top1 .driver-name,
+.standing-row.top2 .driver-name,
+.standing-row.top3 .driver-name {
+  font-weight: 700;
+}
+
+.constructor-name {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  max-width: 90px;
+  flex-shrink: 1;
+}
+
+.points {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  flex-shrink: 0;
+  text-align: right;
+  min-width: 28px;
+}
+
+.standing-row.top1 .points,
+.standing-row.top2 .points,
+.standing-row.top3 .points {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.pts-label {
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+}
+
+.error-msg {
+  padding: 24px 12px;
+  color: rgba(255, 255, 255, 0.35);
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.5;
+}

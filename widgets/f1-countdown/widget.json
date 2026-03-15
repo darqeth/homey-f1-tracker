@@ -1,0 +1,16 @@
+{
+  "id": "f1-countdown",
+  "name": {
+    "en": "F1 Countdown",
+    "nl": "F1 Aftellen"
+  },
+  "width": 2,
+  "height": 200,
+  "api": {
+    "countdown": {
+      "method": "GET",
+      "path": "/countdown"
+    }
+  },
+  "settings": []
+}

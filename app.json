@@ -1,28 +1,664 @@
 {
   "id": "com.darqeth.f1tracker",
-  "version": "0.2.5",
+  "version": "1.1.0",
   "compatibility": ">=12.1.0",
   "sdk": 3,
   "name": {
-    "en": "F1 Tracker+",
-    "nl": "F1 Tracker+"
+    "en": "F1 Tracker Pro",
+    "nl": "F1 Tracker Pro"
   },
-  "icon": "https://www.svgrepo.com/download/320095/f1-car.svg",
+  "icon": "/assets/icon.svg",
   "description": {
-    "en": "Advanced Formula 1 tracking",
-    "nl": "Geavanceerde Formule 1 tracker"
+    "en": "Your Homey co-pilot for Formula 1. Session alerts, live countdown, season calendar and standings — all on your dashboard.",
+    "nl": "Jouw Homey-copiloot voor Formule 1. Sessie-alerts, live afteltimer, seizoenskalender en klassementen op je dashboard."
   },
   "category": "tools",
   "author": {
-    "name": "darqeth"
+    "name": "Mark",
+    "website": "https://www.byhim.nl"
   },
+  "support": "https://www.byhim.nl",
+  "homepage": "https://www.byhim.nl",
   "images": {
     "small": "/assets/images/small.png",
     "large": "/assets/images/large.png"
   },
   "brandColor": "#D80000",
+  "settings": [
+    {
+      "id": "season",
+      "type": "dropdown",
+      "title": {
+        "en": "Season",
+        "nl": "Seizoen"
+      },
+      "value": "current",
+      "values": [
+        {
+          "id": "current",
+          "title": {
+            "en": "Current",
+            "nl": "Huidig"
+          }
+        },
+        {
+          "id": "2026",
+          "title": {
+            "en": "2026",
+            "nl": "2026"
+          }
+        },
+        {
+          "id": "2025",
+          "title": {
+            "en": "2025",
+            "nl": "2025"
+          }
+        }
+      ]
+    },
+    {
+      "id": "schedule_cache_hours",
+      "type": "number",
+      "title": {
+        "en": "Cache duration (hours)",
+        "nl": "Cacheduur (uren)"
+      },
+      "value": 6,
+      "attr": {
+        "min": 1,
+        "max": 48
+      }
+    },
+    {
+      "id": "poll_seconds",
+      "type": "number",
+      "title": {
+        "en": "Poll interval (seconds)",
+        "nl": "Pollinginterval (seconden)"
+      },
+      "value": 30,
+      "attr": {
+        "min": 5,
+        "max": 300
+      }
+    },
+    {
+      "id": "fast_poll_before_minutes",
+      "type": "number",
+      "title": {
+        "en": "Fast polling threshold (minutes before session)",
+        "nl": "Snel pollen tot (minuten voor sessie)"
+      },
+      "value": 10,
+      "attr": {
+        "min": 0,
+        "max": 120
+      }
+    }
+  ],
+  "widgets": {
+    "f1-calendar": {
+      "id": "f1-calendar",
+      "name": {
+        "en": "F1 Calendar",
+        "nl": "F1 Kalender"
+      },
+      "width": 2,
+      "height": 500,
+      "settings": [],
+      "api": {
+        "calendar": {
+          "method": "GET",
+          "path": "/calendar"
+        }
+      }
+    },
+    "f1-drivers": {
+      "id": "f1-drivers",
+      "name": {
+        "en": "F1 Drivers",
+        "nl": "F1 Rijders"
+      },
+      "width": 2,
+      "height": 400,
+      "settings": [],
+      "api": {
+        "standings": {
+          "method": "GET",
+          "path": "/standings"
+        }
+      }
+    },
+    "f1-constructors": {
+      "id": "f1-constructors",
+      "name": {
+        "en": "F1 Constructors",
+        "nl": "F1 Constructeurs"
+      },
+      "width": 2,
+      "height": 300,
+      "settings": [],
+      "api": {
+        "standings": {
+          "method": "GET",
+          "path": "/standings"
+        }
+      }
+    },
+    "f1-drivers-podium": {
+      "id": "f1-drivers-podium",
+      "name": {
+        "en": "F1 Drivers Podium",
+        "nl": "F1 Rijders Podium"
+      },
+      "width": 2,
+      "height": 185,
+      "settings": [],
+      "api": {
+        "standings": {
+          "method": "GET",
+          "path": "/standings"
+        }
+      }
+    },
+    "f1-constructors-podium": {
+      "id": "f1-constructors-podium",
+      "name": {
+        "en": "F1 Constructors Podium",
+        "nl": "F1 Constructeurs Podium"
+      },
+      "width": 2,
+      "height": 185,
+      "settings": [],
+      "api": {
+        "standings": {
+          "method": "GET",
+          "path": "/standings"
+        }
+      }
+    },
+    "f1-countdown": {
+      "id": "f1-countdown",
+      "name": {
+        "en": "F1 Countdown",
+        "nl": "F1 Aftellen"
+      },
+      "width": 2,
+      "height": 200,
+      "settings": [],
+      "api": {
+        "countdown": {
+          "method": "GET",
+          "path": "/countdown"
+        }
+      }
+    }
+  },
   "flow": {
     "triggers": [
+      {
+        "title": {
+          "en": "Free practice 1 starts in…",
+          "nl": "Vrije training 1 begint over…"
+        },
+        "titleFormatted": {
+          "en": "Free practice 1 starts in [[x]] [[unit]]",
+          "nl": "Vrije training 1 begint over [[x]] [[unit]]"
+        },
+        "icon": "/assets/icon.svg",
+        "args": [
+          {
+            "name": "x",
+            "type": "number",
+            "title": {
+              "en": "X",
+              "nl": "X"
+            },
+            "min": 0,
+            "max": 99999
+          },
+          {
+            "name": "unit",
+            "type": "dropdown",
+            "title": {
+              "en": "Unit",
+              "nl": "Tijd"
+            },
+            "values": [
+              {
+                "id": "minutes",
+                "label": {
+                  "en": "minutes",
+                  "nl": "minuten"
+                }
+              },
+              {
+                "id": "hours",
+                "label": {
+                  "en": "hours",
+                  "nl": "uren"
+                }
+              },
+              {
+                "id": "days",
+                "label": {
+                  "en": "days",
+                  "nl": "dagen"
+                }
+              },
+              {
+                "id": "weeks",
+                "label": {
+                  "en": "weeks",
+                  "nl": "weken"
+                }
+              }
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "session_type",
+            "type": "string",
+            "title": {
+              "en": "Session type",
+              "nl": "Sessietype"
+            }
+          },
+          {
+            "name": "round",
+            "type": "string",
+            "title": {
+              "en": "Round",
+              "nl": "Ronde"
+            }
+          },
+          {
+            "name": "gp_name",
+            "type": "string",
+            "title": {
+              "en": "Grand Prix",
+              "nl": "Grand Prix"
+            }
+          },
+          {
+            "name": "start_time",
+            "type": "string",
+            "title": {
+              "en": "Start time",
+              "nl": "Starttijd"
+            }
+          },
+          {
+            "name": "seconds_until",
+            "type": "number",
+            "title": {
+              "en": "Seconds until",
+              "nl": "Seconden tot start"
+            }
+          }
+        ],
+        "id": "fp1_starts_in"
+      },
+      {
+        "title": {
+          "en": "Free practice 1 starts now",
+          "nl": "Vrije training 1 begint nu"
+        },
+        "icon": "/assets/icon.svg",
+        "tokens": [
+          {
+            "name": "session_type",
+            "type": "string",
+            "title": {
+              "en": "Session type",
+              "nl": "Sessietype"
+            }
+          },
+          {
+            "name": "round",
+            "type": "string",
+            "title": {
+              "en": "Round",
+              "nl": "Ronde"
+            }
+          },
+          {
+            "name": "gp_name",
+            "type": "string",
+            "title": {
+              "en": "Grand Prix",
+              "nl": "Grand Prix"
+            }
+          },
+          {
+            "name": "start_time",
+            "type": "string",
+            "title": {
+              "en": "Start time",
+              "nl": "Starttijd"
+            }
+          },
+          {
+            "name": "seconds_until",
+            "type": "number",
+            "title": {
+              "en": "Seconds until",
+              "nl": "Seconden tot start"
+            }
+          }
+        ],
+        "id": "fp1_starts_now"
+      },
+      {
+        "title": {
+          "en": "Free practice 2 starts in…",
+          "nl": "Vrije training 2 begint over…"
+        },
+        "titleFormatted": {
+          "en": "Free practice 2 starts in [[x]] [[unit]]",
+          "nl": "Vrije training 2 begint over [[x]] [[unit]]"
+        },
+        "icon": "/assets/icon.svg",
+        "args": [
+          {
+            "name": "x",
+            "type": "number",
+            "title": {
+              "en": "X",
+              "nl": "X"
+            },
+            "min": 0,
+            "max": 99999
+          },
+          {
+            "name": "unit",
+            "type": "dropdown",
+            "title": {
+              "en": "Unit",
+              "nl": "Tijd"
+            },
+            "values": [
+              {
+                "id": "minutes",
+                "label": {
+                  "en": "minutes",
+                  "nl": "minuten"
+                }
+              },
+              {
+                "id": "hours",
+                "label": {
+                  "en": "hours",
+                  "nl": "uren"
+                }
+              },
+              {
+                "id": "days",
+                "label": {
+                  "en": "days",
+                  "nl": "dagen"
+                }
+              },
+              {
+                "id": "weeks",
+                "label": {
+                  "en": "weeks",
+                  "nl": "weken"
+                }
+              }
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "session_type",
+            "type": "string",
+            "title": {
+              "en": "Session type",
+              "nl": "Sessietype"
+            }
+          },
+          {
+            "name": "round",
+            "type": "string",
+            "title": {
+              "en": "Round",
+              "nl": "Ronde"
+            }
+          },
+          {
+            "name": "gp_name",
+            "type": "string",
+            "title": {
+              "en": "Grand Prix",
+              "nl": "Grand Prix"
+            }
+          },
+          {
+            "name": "start_time",
+            "type": "string",
+            "title": {
+              "en": "Start time",
+              "nl": "Starttijd"
+            }
+          },
+          {
+            "name": "seconds_until",
+            "type": "number",
+            "title": {
+              "en": "Seconds until",
+              "nl": "Seconden tot start"
+            }
+          }
+        ],
+        "id": "fp2_starts_in"
+      },
+      {
+        "title": {
+          "en": "Free practice 2 starts now",
+          "nl": "Vrije training 2 begint nu"
+        },
+        "icon": "/assets/icon.svg",
+        "tokens": [
+          {
+            "name": "session_type",
+            "type": "string",
+            "title": {
+              "en": "Session type",
+              "nl": "Sessietype"
+            }
+          },
+          {
+            "name": "round",
+            "type": "string",
+            "title": {
+              "en": "Round",
+              "nl": "Ronde"
+            }
+          },
+          {
+            "name": "gp_name",
+            "type": "string",
+            "title": {
+              "en": "Grand Prix",
+              "nl": "Grand Prix"
+            }
+          },
+          {
+            "name": "start_time",
+            "type": "string",
+            "title": {
+              "en": "Start time",
+              "nl": "Starttijd"
+            }
+          },
+          {
+            "name": "seconds_until",
+            "type": "number",
+            "title": {
+              "en": "Seconds until",
+              "nl": "Seconden tot start"
+            }
+          }
+        ],
+        "id": "fp2_starts_now"
+      },
+      {
+        "title": {
+          "en": "Free practice 3 starts in…",
+          "nl": "Vrije training 3 begint over…"
+        },
+        "titleFormatted": {
+          "en": "Free practice 3 starts in [[x]] [[unit]]",
+          "nl": "Vrije training 3 begint over [[x]] [[unit]]"
+        },
+        "icon": "/assets/icon.svg",
+        "args": [
+          {
+            "name": "x",
+            "type": "number",
+            "title": {
+              "en": "X",
+              "nl": "X"
+            },
+            "min": 0,
+            "max": 99999
+          },
+          {
+            "name": "unit",
+            "type": "dropdown",
+            "title": {
+              "en": "Unit",
+              "nl": "Tijd"
+            },
+            "values": [
+              {
+                "id": "minutes",
+                "label": {
+                  "en": "minutes",
+                  "nl": "minuten"
+                }
+              },
+              {
+                "id": "hours",
+                "label": {
+                  "en": "hours",
+                  "nl": "uren"
+                }
+              },
+              {
+                "id": "days",
+                "label": {
+                  "en": "days",
+                  "nl": "dagen"
+                }
+              },
+              {
+                "id": "weeks",
+                "label": {
+                  "en": "weeks",
+                  "nl": "weken"
+                }
+              }
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "session_type",
+            "type": "string",
+            "title": {
+              "en": "Session type",
+              "nl": "Sessietype"
+            }
+          },
+          {
+            "name": "round",
+            "type": "string",
+            "title": {
+              "en": "Round",
+              "nl": "Ronde"
+            }
+          },
+          {
+            "name": "gp_name",
+            "type": "string",
+            "title": {
+              "en": "Grand Prix",
+              "nl": "Grand Prix"
+            }
+          },
+          {
+            "name": "start_time",
+            "type": "string",
+            "title": {
+              "en": "Start time",
+              "nl": "Starttijd"
+            }
+          },
+          {
+            "name": "seconds_until",
+            "type": "number",
+            "title": {
+              "en": "Seconds until",
+              "nl": "Seconden tot start"
+            }
+          }
+        ],
+        "id": "fp3_starts_in"
+      },
+      {
+        "title": {
+          "en": "Free practice 3 starts now",
+          "nl": "Vrije training 3 begint nu"
+        },
+        "icon": "/assets/icon.svg",
+        "tokens": [
+          {
+            "name": "session_type",
+            "type": "string",
+            "title": {
+              "en": "Session type",
+              "nl": "Sessietype"
+            }
+          },
+          {
+            "name": "round",
+            "type": "string",
+            "title": {
+              "en": "Round",
+              "nl": "Ronde"
+            }
+          },
+          {
+            "name": "gp_name",
+            "type": "string",
+            "title": {
+              "en": "Grand Prix",
+              "nl": "Grand Prix"
+            }
+          },
+          {
+            "name": "start_time",
+            "type": "string",
+            "title": {
+              "en": "Start time",
+              "nl": "Starttijd"
+            }
+          },
+          {
+            "name": "seconds_until",
+            "type": "number",
+            "title": {
+              "en": "Seconds until",
+              "nl": "Seconden tot start"
+            }
+          }
+        ],
+        "id": "fp3_starts_now"
+      },
       {
         "title": {
           "en": "Next session starts in…",
@@ -52,13 +688,6 @@
             },
             "values": [
               {
-                "id": "seconds",
-                "label": {
-                  "en": "seconds",
-                  "nl": "seconden"
-                }
-              },
-              {
                 "id": "minutes",
                 "label": {
                   "en": "minutes",
@@ -115,19 +744,11 @@
             }
           },
           {
-            "name": "start_local",
+            "name": "start_time",
             "type": "string",
             "title": {
-              "en": "Start (local)",
-              "nl": "Start (lokaal)"
-            }
-          },
-          {
-            "name": "start_utc",
-            "type": "string",
-            "title": {
-              "en": "Start (UTC)",
-              "nl": "Start (UTC)"
+              "en": "Start time",
+              "nl": "Starttijd"
             }
           },
           {
@@ -150,6 +771,7 @@
           "en": "Qualifying starts in [[x]] [[unit]]",
           "nl": "De kwalificatie gaat beginnen over [[x]] [[unit]]"
         },
+        "icon": "/assets/icon.svg",
         "args": [
           {
             "name": "x",
@@ -169,13 +791,6 @@
               "nl": "Tijd"
             },
             "values": [
-              {
-                "id": "seconds",
-                "label": {
-                  "en": "seconds",
-                  "nl": "seconden"
-                }
-              },
               {
                 "id": "minutes",
                 "label": {
@@ -233,19 +848,11 @@
             }
           },
           {
-            "name": "start_local",
+            "name": "start_time",
             "type": "string",
             "title": {
-              "en": "Start (local)",
-              "nl": "Start (lokaal)"
-            }
-          },
-          {
-            "name": "start_utc",
-            "type": "string",
-            "title": {
-              "en": "Start (UTC)",
-              "nl": "Start (UTC)"
+              "en": "Start time",
+              "nl": "Starttijd"
             }
           },
           {
@@ -264,6 +871,7 @@
           "en": "Qualifying starts now",
           "nl": "De kwalificatie begint nu"
         },
+        "icon": "/assets/icon.svg",
         "tokens": [
           {
             "name": "session_type",
@@ -290,19 +898,11 @@
             }
           },
           {
-            "name": "start_local",
+            "name": "start_time",
             "type": "string",
             "title": {
-              "en": "Start (local)",
-              "nl": "Start (lokaal)"
-            }
-          },
-          {
-            "name": "start_utc",
-            "type": "string",
-            "title": {
-              "en": "Start (UTC)",
-              "nl": "Start (UTC)"
+              "en": "Start time",
+              "nl": "Starttijd"
             }
           },
           {
@@ -315,6 +915,48 @@
           }
         ],
         "id": "quali_starts_now"
+      },
+      {
+        "title": {
+          "en": "A race has finished",
+          "nl": "Een race is afgelopen"
+        },
+        "icon": "/assets/icon.svg",
+        "tokens": [
+          {
+            "name": "winner_name",
+            "type": "string",
+            "title": {
+              "en": "Winner",
+              "nl": "Winnaar"
+            }
+          },
+          {
+            "name": "winner_constructor",
+            "type": "string",
+            "title": {
+              "en": "Constructor",
+              "nl": "Constructeur"
+            }
+          },
+          {
+            "name": "gp_name",
+            "type": "string",
+            "title": {
+              "en": "Grand Prix",
+              "nl": "Grand Prix"
+            }
+          },
+          {
+            "name": "round",
+            "type": "string",
+            "title": {
+              "en": "Round",
+              "nl": "Ronde"
+            }
+          }
+        ],
+        "id": "race_finished"
       },
       {
         "title": {
@@ -346,13 +988,6 @@
             },
             "values": [
               {
-                "id": "seconds",
-                "label": {
-                  "en": "seconds",
-                  "nl": "seconden"
-                }
-              },
-              {
                 "id": "minutes",
                 "label": {
                   "en": "minutes",
@@ -409,19 +1044,11 @@
             }
           },
           {
-            "name": "start_local",
+            "name": "start_time",
             "type": "string",
             "title": {
-              "en": "Start (local)",
-              "nl": "Start (lokaal)"
-            }
-          },
-          {
-            "name": "start_utc",
-            "type": "string",
-            "title": {
-              "en": "Start (UTC)",
-              "nl": "Start (UTC)"
+              "en": "Start time",
+              "nl": "Starttijd"
             }
           },
           {
@@ -440,7 +1067,7 @@
           "en": "The race starts now",
           "nl": "De race begint nu"
         },
-        "icon": "https://www.svgrepo.com/download/320095/f1-car.svg",
+        "icon": "/assets/icon.svg",
         "tokens": [
           {
             "name": "session_type",
@@ -467,19 +1094,11 @@
             }
           },
           {
-            "name": "start_local",
+            "name": "start_time",
             "type": "string",
             "title": {
-              "en": "Start (local)",
-              "nl": "Start (lokaal)"
-            }
-          },
-          {
-            "name": "start_utc",
-            "type": "string",
-            "title": {
-              "en": "Start (UTC)",
-              "nl": "Start (UTC)"
+              "en": "Start time",
+              "nl": "Starttijd"
             }
           },
           {
@@ -498,6 +1117,7 @@
           "en": "A session starts now",
           "nl": "Een sessie begint nu"
         },
+        "icon": "/assets/icon.svg",
         "tokens": [
           {
             "name": "session_type",
@@ -524,19 +1144,11 @@
             }
           },
           {
-            "name": "start_local",
+            "name": "start_time",
             "type": "string",
             "title": {
-              "en": "Start (local)",
-              "nl": "Start (lokaal)"
-            }
-          },
-          {
-            "name": "start_utc",
-            "type": "string",
-            "title": {
-              "en": "Start (UTC)",
-              "nl": "Start (UTC)"
+              "en": "Start time",
+              "nl": "Starttijd"
             }
           },
           {
@@ -579,13 +1191,6 @@
             },
             "values": [
               {
-                "id": "seconds",
-                "label": {
-                  "en": "seconds",
-                  "nl": "seconden"
-                }
-              },
-              {
                 "id": "minutes",
                 "label": {
                   "en": "minutes",
@@ -642,19 +1247,11 @@
             }
           },
           {
-            "name": "start_local",
+            "name": "start_time",
             "type": "string",
             "title": {
-              "en": "Start (local)",
-              "nl": "Start (lokaal)"
-            }
-          },
-          {
-            "name": "start_utc",
-            "type": "string",
-            "title": {
-              "en": "Start (UTC)",
-              "nl": "Start (UTC)"
+              "en": "Start time",
+              "nl": "Starttijd"
             }
           },
           {
@@ -673,6 +1270,7 @@
           "en": "Sprint qualifying starts now",
           "nl": "De sprint kwalificatie begint nu"
         },
+        "icon": "/assets/icon.svg",
         "tokens": [
           {
             "name": "session_type",
@@ -699,19 +1297,11 @@
             }
           },
           {
-            "name": "start_local",
+            "name": "start_time",
             "type": "string",
             "title": {
-              "en": "Start (local)",
-              "nl": "Start (lokaal)"
-            }
-          },
-          {
-            "name": "start_utc",
-            "type": "string",
-            "title": {
-              "en": "Start (UTC)",
-              "nl": "Start (UTC)"
+              "en": "Start time",
+              "nl": "Starttijd"
             }
           },
           {
@@ -734,6 +1324,7 @@
           "en": "Sprint starts in [[x]] [[unit]]",
           "nl": "De sprint gaat beginnen over [[x]] [[unit]]"
         },
+        "icon": "/assets/icon.svg",
         "args": [
           {
             "name": "x",
@@ -753,13 +1344,6 @@
               "nl": "Tijd"
             },
             "values": [
-              {
-                "id": "seconds",
-                "label": {
-                  "en": "seconds",
-                  "nl": "seconden"
-                }
-              },
               {
                 "id": "minutes",
                 "label": {
@@ -817,19 +1401,11 @@
             }
           },
           {
-            "name": "start_local",
+            "name": "start_time",
             "type": "string",
             "title": {
-              "en": "Start (local)",
-              "nl": "Start (lokaal)"
-            }
-          },
-          {
-            "name": "start_utc",
-            "type": "string",
-            "title": {
-              "en": "Start (UTC)",
-              "nl": "Start (UTC)"
+              "en": "Start time",
+              "nl": "Starttijd"
             }
           },
           {
@@ -848,6 +1424,7 @@
           "en": "Sprint starts now",
           "nl": "De sprint begint nu"
         },
+        "icon": "/assets/icon.svg",
         "tokens": [
           {
             "name": "session_type",
@@ -874,19 +1451,11 @@
             }
           },
           {
-            "name": "start_local",
+            "name": "start_time",
             "type": "string",
             "title": {
-              "en": "Start (local)",
-              "nl": "Start (lokaal)"
-            }
-          },
-          {
-            "name": "start_utc",
-            "type": "string",
-            "title": {
-              "en": "Start (UTC)",
-              "nl": "Start (UTC)"
+              "en": "Start time",
+              "nl": "Starttijd"
             }
           },
           {
@@ -902,6 +1471,20 @@
       }
     ],
     "conditions": [
+      {
+        "title": {
+          "en": "There is a Formula 1 session today",
+          "nl": "Er is vandaag een Formule 1 sessie"
+        },
+        "id": "has_session_today"
+      },
+      {
+        "title": {
+          "en": "This week is a race weekend",
+          "nl": "Deze week is een race-weekend"
+        },
+        "id": "is_race_weekend"
+      },
       {
         "title": {
           "en": "The race starts in…",
@@ -1063,56 +1646,171 @@
       },
       {
         "title": {
+          "en": "Get constructor standings",
+          "nl": "Haal constructeurskampioenschap op"
+        },
+        "tokens": [
+          {
+            "name": "leader_name",
+            "type": "string",
+            "title": {
+              "en": "Leader name",
+              "nl": "Leider naam"
+            }
+          },
+          {
+            "name": "leader_points",
+            "type": "string",
+            "title": {
+              "en": "Leader points",
+              "nl": "Leider punten"
+            }
+          },
+          {
+            "name": "second_name",
+            "type": "string",
+            "title": {
+              "en": "2nd place name",
+              "nl": "2e naam"
+            }
+          },
+          {
+            "name": "second_points",
+            "type": "string",
+            "title": {
+              "en": "2nd place points",
+              "nl": "2e punten"
+            }
+          }
+        ],
+        "id": "get_constructor_standings"
+      },
+      {
+        "title": {
+          "en": "Get session countdown",
+          "nl": "Haal sessie countdown op"
+        },
+        "tokens": [
+          {
+            "name": "countdown_string",
+            "type": "string",
+            "title": {
+              "en": "Countdown",
+              "nl": "Afteltijd"
+            }
+          }
+        ],
+        "id": "get_countdown"
+      },
+      {
+        "title": {
+          "en": "Get driver standings",
+          "nl": "Haal rijderskampioenschap op"
+        },
+        "tokens": [
+          {
+            "name": "leader_name",
+            "type": "string",
+            "title": {
+              "en": "Leader name",
+              "nl": "Leider naam"
+            }
+          },
+          {
+            "name": "leader_points",
+            "type": "string",
+            "title": {
+              "en": "Leader points",
+              "nl": "Leider punten"
+            }
+          },
+          {
+            "name": "leader_constructor",
+            "type": "string",
+            "title": {
+              "en": "Leader constructor",
+              "nl": "Leider constructeur"
+            }
+          },
+          {
+            "name": "second_name",
+            "type": "string",
+            "title": {
+              "en": "2nd place name",
+              "nl": "2e naam"
+            }
+          },
+          {
+            "name": "second_points",
+            "type": "string",
+            "title": {
+              "en": "2nd place points",
+              "nl": "2e punten"
+            }
+          }
+        ],
+        "id": "get_driver_standings"
+      },
+      {
+        "title": {
           "en": "Get next race info",
           "nl": "Haal info op over de volgende race"
         },
         "tokens": [
           {
-            "name": "session_type",
+            "name": "race_round",
             "type": "string",
             "title": {
-              "en": "Session type",
-              "nl": "Sessietype"
+              "en": "Race: Round",
+              "nl": "Race: Ronde"
             }
           },
           {
-            "name": "round",
+            "name": "race_gp_name",
             "type": "string",
             "title": {
-              "en": "Round",
-              "nl": "Ronde"
+              "en": "Race: Grand Prix",
+              "nl": "Race: Grand Prix"
             }
           },
           {
-            "name": "gp_name",
+            "name": "race_start_time",
             "type": "string",
             "title": {
-              "en": "Grand Prix",
-              "nl": "Grand Prix"
+              "en": "Race: Start time",
+              "nl": "Race: Starttijd"
             }
           },
           {
-            "name": "start_local",
+            "name": "race_circuit",
             "type": "string",
             "title": {
-              "en": "Start (local)",
-              "nl": "Start (lokaal)"
+              "en": "Race: Circuit",
+              "nl": "Race: Circuit"
             }
           },
           {
-            "name": "start_utc",
+            "name": "race_country",
             "type": "string",
             "title": {
-              "en": "Start (UTC)",
-              "nl": "Start (UTC)"
+              "en": "Race: Country",
+              "nl": "Race: Land"
             }
           },
           {
-            "name": "seconds_until",
-            "type": "number",
+            "name": "race_city",
+            "type": "string",
             "title": {
-              "en": "Seconds until",
-              "nl": "Seconden tot start"
+              "en": "Race: City",
+              "nl": "Race: Stad"
+            }
+          },
+          {
+            "name": "race_countdown",
+            "type": "string",
+            "title": {
+              "en": "Race: Countdown",
+              "nl": "Race: Afteltijd"
             }
           }
         ],
@@ -1125,51 +1823,67 @@
         },
         "tokens": [
           {
-            "name": "session_type",
+            "name": "next_session_type",
             "type": "string",
             "title": {
-              "en": "Session type",
-              "nl": "Sessietype"
+              "en": "Next: Session type",
+              "nl": "Volgende: Sessietype"
             }
           },
           {
-            "name": "round",
+            "name": "next_round",
             "type": "string",
             "title": {
-              "en": "Round",
-              "nl": "Ronde"
+              "en": "Next: Round",
+              "nl": "Volgende: Ronde"
             }
           },
           {
-            "name": "gp_name",
+            "name": "next_gp_name",
             "type": "string",
             "title": {
-              "en": "Grand Prix",
-              "nl": "Grand Prix"
+              "en": "Next: Grand Prix",
+              "nl": "Volgende: Grand Prix"
             }
           },
           {
-            "name": "start_local",
+            "name": "next_start_time",
             "type": "string",
             "title": {
-              "en": "Start (local)",
-              "nl": "Start (lokaal)"
+              "en": "Next: Start time",
+              "nl": "Volgende: Starttijd"
             }
           },
           {
-            "name": "start_utc",
+            "name": "next_circuit",
             "type": "string",
             "title": {
-              "en": "Start (UTC)",
-              "nl": "Start (UTC)"
+              "en": "Next: Circuit",
+              "nl": "Volgende: Circuit"
             }
           },
           {
-            "name": "seconds_until",
-            "type": "number",
+            "name": "next_country",
+            "type": "string",
             "title": {
-              "en": "Seconds until",
-              "nl": "Seconden tot start"
+              "en": "Next: Country",
+              "nl": "Volgende: Land"
+            }
+          },
+          {
+            "name": "next_city",
+            "type": "string",
+            "title": {
+              "en": "Next: City",
+              "nl": "Volgende: Stad"
+            }
+          },
+          {
+            "name": "next_countdown",
+            "type": "string",
+            "title": {
+              "en": "Next: Countdown",
+              "nl": "Volgende: Afteltijd"
             }
           }
         ],

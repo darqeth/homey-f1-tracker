@@ -7,111 +7,32 @@
     "en": "Sprint starts in [[x]] [[unit]]",
     "nl": "De sprint gaat beginnen over [[x]] [[unit]]"
   },
+  "icon": "/assets/icon.svg",
   "args": [
     {
       "name": "x",
       "type": "number",
-      "title": {
-        "en": "X",
-        "nl": "X"
-      },
+      "title": { "en": "X", "nl": "X" },
       "min": 0,
       "max": 99999
     },
     {
       "name": "unit",
       "type": "dropdown",
-      "title": {
-        "en": "Unit",
-        "nl": "Tijd"
-      },
+      "title": { "en": "Unit", "nl": "Tijd" },
       "values": [
-        {
-          "id": "seconds",
-          "label": {
-            "en": "seconds",
-            "nl": "seconden"
-          }
-        },
-        {
-          "id": "minutes",
-          "label": {
-            "en": "minutes",
-            "nl": "minuten"
-          }
-        },
-        {
-          "id": "hours",
-          "label": {
-            "en": "hours",
-            "nl": "uren"
-          }
-        },
-        {
-          "id": "days",
-          "label": {
-            "en": "days",
-            "nl": "dagen"
-          }
-        },
-        {
-          "id": "weeks",
-          "label": {
-            "en": "weeks",
-            "nl": "weken"
-          }
-        }
+        { "id": "minutes", "label": { "en": "minutes", "nl": "minuten" } },
+        { "id": "hours",   "label": { "en": "hours",   "nl": "uren" } },
+        { "id": "days",    "label": { "en": "days",    "nl": "dagen" } },
+        { "id": "weeks",   "label": { "en": "weeks",   "nl": "weken" } }
       ]
     }
   ],
   "tokens": [
-    {
-      "name": "session_type",
-      "type": "string",
-      "title": {
-        "en": "Session type",
-        "nl": "Sessietype"
-      }
-    },
-    {
-      "name": "round",
-      "type": "string",
-      "title": {
-        "en": "Round",
-        "nl": "Ronde"
-      }
-    },
-    {
-      "name": "gp_name",
-      "type": "string",
-      "title": {
-        "en": "Grand Prix",
-        "nl": "Grand Prix"
-      }
-    },
-    {
-      "name": "start_local",
-      "type": "string",
-      "title": {
-        "en": "Start (local)",
-        "nl": "Start (lokaal)"
-      }
-    },
-    {
-      "name": "start_utc",
-      "type": "string",
-      "title": {
-        "en": "Start (UTC)",
-        "nl": "Start (UTC)"
-      }
-    },
-    {
-      "name": "seconds_until",
-      "type": "number",
-      "title": {
-        "en": "Seconds until",
-        "nl": "Seconden tot start"
-      }
-    }
+    { "name": "session_type",  "type": "string", "title": { "en": "Session type",  "nl": "Sessietype" } },
+    { "name": "round",         "type": "string", "title": { "en": "Round",         "nl": "Ronde" } },
+    { "name": "gp_name",       "type": "string", "title": { "en": "Grand Prix",    "nl": "Grand Prix" } },
+    { "name": "start_time",    "type": "string", "title": { "en": "Start time",    "nl": "Starttijd" } },
+    { "name": "seconds_until", "type": "number", "title": { "en": "Seconds until", "nl": "Seconden tot start" } }
   ]
 }
