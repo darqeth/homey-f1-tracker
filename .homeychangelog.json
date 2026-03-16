@@ -43,5 +43,11 @@
   },
   "1.1.5": {
     "en": "Add subtle orange highlight for the Dutch GP row in the calendar, and for Max Verstappen in driver standings and podium widgets."
+  },
+  "1.2.0": {
+    "en": "New dashboard widgets: redesigned drivers standings with hero card (photo, points, wins, podiums, poles), constructor standings hero with team car, weekend schedule widget with circuit SVG and live session indicator, race finished trigger with winner tokens, FP1/2/3 session triggers, driver and constructor standings flow actions, Dutch GP and Verstappen orange accent. Bug fixes: flow trigger run listeners, trigger deduplication."
+  },
+  "1.2.1": {
+    "en": "Fix: 'race finished' and 'starts in' triggers no longer repeat after an app restart. Trigger deduplication is now persisted to settings so it survives reboots."
   }
 }
