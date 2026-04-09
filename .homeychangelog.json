@@ -49,5 +49,8 @@
   },
   "1.2.1": {
     "en": "Fix: 'race finished' and 'starts in' triggers no longer repeat after an app restart. Trigger deduplication is now persisted to settings so it survives reboots."
+  },
+  "1.2.2": {
+    "en": "Update App Store listing: shorter app description and refreshed widget preview images."
   }
 }

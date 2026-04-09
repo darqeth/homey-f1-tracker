@@ -1,6 +1,6 @@
 {
   "id": "com.darqeth.f1tracker",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "compatibility": ">=12.1.0",
   "sdk": 3,
   "name": {
@@ -9,8 +9,8 @@
   },
   "icon": "/assets/icon.svg",
   "description": {
-    "en": "Your Homey co-pilot for Formula 1. Session alerts, live countdown, season calendar and standings — all on your dashboard.",
-    "nl": "Jouw Homey-copiloot voor Formule 1. Sessie-alerts, live afteltimer, seizoenskalender en klassementen op je dashboard."
+    "en": "Your Homey co-pilot for Formula 1.",
+    "nl": "Jouw Homey-copiloot voor Formule 1."
   },
   "category": "tools",
   "author": {
