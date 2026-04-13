@@ -50,12 +50,12 @@ const CIRCUIT_SVG = {
   las_vegas:     'las-vegas-1',
   yas_marina:    'yas-marina-2',
   losail:        'lusail-1',
-  red_bull_ring: 'red-bull-ring-1',
+  red_bull_ring: 'spielberg-3',
   catalunya:     'catalunya-6',
   kyalami:       'kyalami-1',
 };
 
-const SVG_BASE = 'https://raw.githubusercontent.com/julesr0y/f1-circuits-svg/main/circuits/black/';
+const SVG_BASE = 'https://raw.githubusercontent.com/julesr0y/f1-circuits-svg/main/circuits/minimal/black/';
 
 function flagEmoji(country) {
   const code = COUNTRY_FLAG[country];

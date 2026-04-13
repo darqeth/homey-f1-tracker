@@ -55,5 +55,8 @@
   },
   "1.2.3": {
     "en": "Fix: widgets no longer show a blank white screen on first load. Homey.ready() is now called immediately so the widget is always visible, even when F1 data is still loading."
+  },
+  "1.2.4": {
+    "en": "Fix: widgets no longer show a blank white screen on first load (all 7 widgets). Fix: circuit SVG now displays correctly in the Weekend Schedule widget — corrected the SVG source path and fixed the Red Bull Ring circuit mapping."
   }
 }
