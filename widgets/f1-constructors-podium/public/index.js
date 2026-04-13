@@ -53,7 +53,7 @@ function renderPodium(standings) {
 }
 
 function onHomeyReady(Homey) {
-  let readyCalled = false;
+  Homey.ready({ height: 185 });
 
   function load() {
     Homey.api('GET', '/standings', {})
@@ -62,22 +62,12 @@ function onHomeyReady(Homey) {
         const now = new Date();
         document.getElementById('updated').textContent =
           now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
         const height = document.body.scrollHeight;
-        if (!readyCalled) {
-          Homey.ready({ height });
-          readyCalled = true;
-        } else {
-          Homey.setHeight(height);
-        }
+        if (height > 0) Homey.setHeight(height);
       })
       .catch(() => {
         document.getElementById('podium').innerHTML =
           '<div class="error-msg">Could not load standings.<br>Check app connection.</div>';
-        if (!readyCalled) {
-          Homey.ready({ height: 120 });
-          readyCalled = true;
-        }
       });
   }
 

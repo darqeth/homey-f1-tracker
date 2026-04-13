@@ -102,7 +102,7 @@ function tick() {
 // ─── Load data ───────────────────────────────────────────────────────────────
 
 function onHomeyReady(Homey) {
-  let readyCalled = false;
+  Homey.ready({ height: 200 });
 
   initDigits();
   tickTimer = setInterval(tick, 1000);
@@ -137,19 +137,10 @@ function onHomeyReady(Homey) {
         }
 
         const height = document.body.scrollHeight;
-        if (!readyCalled) {
-          Homey.ready({ height });
-          readyCalled = true;
-        } else {
-          Homey.setHeight(height);
-        }
+        if (height > 0) Homey.setHeight(height);
       })
       .catch(() => {
         document.getElementById('race-name').textContent = 'Check app connection';
-        if (!readyCalled) {
-          Homey.ready({ height: 120 });
-          readyCalled = true;
-        }
       });
   }
 

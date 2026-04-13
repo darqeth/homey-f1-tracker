@@ -52,5 +52,8 @@
   },
   "1.2.2": {
     "en": "Update App Store listing: shorter app description and refreshed widget preview images."
+  },
+  "1.2.3": {
+    "en": "Fix: widgets no longer show a blank white screen on first load. Homey.ready() is now called immediately so the widget is always visible, even when F1 data is still loading."
   }
 }

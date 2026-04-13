@@ -169,7 +169,9 @@ function renderSchedule(data) {
 }
 
 function onHomeyReady(Homey) {
-  let readyCalled = false;
+  // Call ready immediately so Homey never shows a permanent blank widget
+  // while waiting for the API (which may need to fetch live F1 data first).
+  Homey.ready({ height: 200 });
 
   function load() {
     Homey.api('GET', '/schedule', {})
@@ -177,14 +179,12 @@ function onHomeyReady(Homey) {
         renderSchedule(data);
         setTimeout(() => {
           const height = document.body.scrollHeight;
-          if (!readyCalled) { Homey.ready({ height }); readyCalled = true; }
-          else Homey.setHeight(height);
-        }, 500);
+          if (height > 0) Homey.setHeight(height);
+        }, 300);
       })
       .catch(() => {
         document.getElementById('sessions-grid').innerHTML =
           '<div class="error-msg" style="grid-column:1/-1">Could not load schedule.</div>';
-        if (!readyCalled) { Homey.ready({ height: 140 }); readyCalled = true; }
       });
   }
 

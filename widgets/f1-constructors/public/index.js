@@ -85,20 +85,18 @@ function renderStandings(standings) {
 }
 
 function onHomeyReady(Homey) {
-  let readyCalled = false;
+  Homey.ready({ height: 300 });
 
   function load() {
     Homey.api('GET', '/standings', {})
       .then(standings => {
         renderStandings(standings);
         const height = document.body.scrollHeight;
-        if (!readyCalled) { Homey.ready({ height }); readyCalled = true; }
-        else Homey.setHeight(height);
+        if (height > 0) Homey.setHeight(height);
       })
       .catch(() => {
         document.getElementById('list').innerHTML =
           '<div class="error-msg">Could not load standings.</div>';
-        if (!readyCalled) { Homey.ready({ height: 120 }); readyCalled = true; }
       });
   }
 
