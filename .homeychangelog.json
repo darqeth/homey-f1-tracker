@@ -58,5 +58,8 @@
   },
   "1.2.4": {
     "en": "Fix: widgets no longer show a blank white screen on first load (all 7 widgets). Fix: circuit SVG now displays correctly in the Weekend Schedule widget — corrected the SVG source path and fixed the Red Bull Ring circuit mapping."
+  },
+  "1.2.5": {
+    "en": "Fix: Weekend Schedule widget text is now readable in light mode. Replaced hardcoded white colors with theme-aware colors that adapt to both light and dark mode."
   }
 }
