@@ -22,9 +22,11 @@ function carImageUrl(constructorId) {
 }
 
 function renderStandings(standings) {
+  const isNl = (navigator.language || 'en').toLowerCase().startsWith('nl');
+
   if (!standings || standings.length === 0) {
     document.getElementById('list').innerHTML =
-      '<div class="error-msg">No standings available yet.</div>';
+      `<div class="error-msg">${isNl ? 'Nog geen standen beschikbaar.' : 'No standings available yet.'}</div>`;
     return;
   }
 
@@ -32,9 +34,10 @@ function renderStandings(standings) {
   const year = new Date().getFullYear();
 
   // ── Hero ──
-  document.getElementById('hero-pos-badge').textContent = 'Constructor\'s Leader';
+  document.getElementById('hero-pos-badge').textContent =
+    isNl ? 'Constructeursleider' : 'Constructor\'s Leader';
   document.getElementById('hero-team-name').textContent = top.name;
-  document.getElementById('hero-season').textContent = year + ' Season';
+  document.getElementById('hero-season').textContent = year + (isNl ? ' Seizoen' : ' Season');
   document.getElementById('hero-pts').textContent = top.points;
   document.getElementById('hero-wins').textContent = top.wins || '0';
   document.getElementById('hero-podiums').textContent = top.podiums || '0';
@@ -95,8 +98,9 @@ function onHomeyReady(Homey) {
         if (height > 0) Homey.setHeight(height);
       })
       .catch(() => {
+        const isNl = (navigator.language || 'en').toLowerCase().startsWith('nl');
         document.getElementById('list').innerHTML =
-          '<div class="error-msg">Could not load standings.</div>';
+          `<div class="error-msg">${isNl ? 'Standen konden niet geladen worden.' : 'Could not load standings.'}</div>`;
       });
   }
 

@@ -39,9 +39,11 @@ function driverPhotoUrl(driverId) {
 }
 
 function renderStandings(standings) {
+  const isNl = (navigator.language || 'en').toLowerCase().startsWith('nl');
+
   if (!standings || standings.length === 0) {
     document.getElementById('list').innerHTML =
-      '<div class="error-msg">No standings available yet.</div>';
+      `<div class="error-msg">${isNl ? 'Nog geen standen beschikbaar.' : 'No standings available yet.'}</div>`;
     return;
   }
 
@@ -52,7 +54,8 @@ function renderStandings(standings) {
   const hero = document.getElementById('hero');
   hero.className = isVer ? 'ver-highlight' : '';
 
-  document.getElementById('hero-pos-badge').textContent = 'Championship Leader';
+  document.getElementById('hero-pos-badge').textContent =
+    isNl ? 'Kampioenschapsleider' : 'Championship Leader';
   document.getElementById('hero-firstname').textContent = top.firstName || '';
   document.getElementById('hero-lastname').textContent = (top.lastName || top.name).toUpperCase();
   document.getElementById('hero-team').textContent = top.constructor || '';
@@ -116,8 +119,9 @@ function onHomeyReady(Homey) {
         if (height > 0) Homey.setHeight(height);
       })
       .catch(() => {
+        const isNl = (navigator.language || 'en').toLowerCase().startsWith('nl');
         document.getElementById('list').innerHTML =
-          '<div class="error-msg">Could not load standings.</div>';
+          `<div class="error-msg">${isNl ? 'Standen konden niet geladen worden.' : 'Could not load standings.'}</div>`;
       });
   }
 

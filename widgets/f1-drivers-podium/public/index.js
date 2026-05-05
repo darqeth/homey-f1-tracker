@@ -3,11 +3,12 @@
 const REFRESH_INTERVAL = 5 * 60 * 1000;
 
 function renderPodium(standings) {
+  const isNl = (navigator.language || 'en').toLowerCase().startsWith('nl');
   const podium = document.getElementById('podium');
   podium.innerHTML = '';
 
   if (!standings || standings.length < 3) {
-    podium.innerHTML = '<div class="error-msg">No data yet.<br>Nog geen data beschikbaar.</div>';
+    podium.innerHTML = `<div class="error-msg">${isNl ? 'Nog geen data beschikbaar.' : 'No data yet.'}</div>`;
     return;
   }
 
@@ -38,6 +39,10 @@ function renderPodium(standings) {
 function onHomeyReady(Homey) {
   Homey.ready({ height: 185 });
 
+  const isNl = (navigator.language || 'en').toLowerCase().startsWith('nl');
+  document.getElementById('title').textContent =
+    isNl ? 'F1 Rijders Podium' : 'F1 Drivers Podium';
+
   function load() {
     Homey.api('GET', '/standings', {})
       .then(standings => {
@@ -49,8 +54,9 @@ function onHomeyReady(Homey) {
         if (height > 0) Homey.setHeight(height);
       })
       .catch(() => {
+        const isNlCatch = (navigator.language || 'en').toLowerCase().startsWith('nl');
         document.getElementById('podium').innerHTML =
-          '<div class="error-msg">Could not load standings.<br>Check app connection.</div>';
+          `<div class="error-msg">${isNlCatch ? 'Standen konden niet geladen worden.<br>Controleer app verbinding.' : 'Could not load standings.<br>Check app connection.'}</div>`;
       });
   }
 

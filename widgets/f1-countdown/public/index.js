@@ -140,7 +140,9 @@ function onHomeyReady(Homey) {
         if (height > 0) Homey.setHeight(height);
       })
       .catch(() => {
-        document.getElementById('race-name').textContent = 'Check app connection';
+        const isNl = (navigator.language || 'en').toLowerCase().startsWith('nl');
+        document.getElementById('race-name').textContent =
+          isNl ? 'Controleer app verbinding' : 'Check app connection';
       });
   }
 

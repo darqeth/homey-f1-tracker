@@ -96,20 +96,20 @@ function loadCircuitSvg(circuitId, isDutch) {
 }
 
 function renderSchedule(data) {
-  if (!data) {
-    document.getElementById('sessions-grid').innerHTML =
-      '<div class="error-msg" style="grid-column:1/-1">No upcoming race found.</div>';
-    return;
-  }
-
   const userLang = (navigator.language || 'en').toLowerCase();
   const isNl  = userLang.startsWith('nl');
+
+  if (!data) {
+    document.getElementById('sessions-grid').innerHTML =
+      `<div class="error-msg" style="grid-column:1/-1">${isNl ? 'Geen aankomende race gevonden.' : 'No upcoming race found.'}</div>`;
+    return;
+  }
   const locale = isNl ? 'nl-NL' : 'en-GB';
   const now    = Date.now();
 
   // Flag + country
   document.getElementById('flag').textContent = flagEmoji(data.country);
-  document.getElementById('round-label').textContent = 'Round ' + data.round;
+  document.getElementById('round-label').textContent = (isNl ? 'Ronde ' : 'Round ') + data.round;
   document.getElementById('round-label').classList.toggle('dutch', !!data.isDutch);
   document.getElementById('country-name').textContent =
     COUNTRY_SHORT[data.country] || data.country;
@@ -183,8 +183,9 @@ function onHomeyReady(Homey) {
         }, 300);
       })
       .catch(() => {
+        const isNl = (navigator.language || 'en').toLowerCase().startsWith('nl');
         document.getElementById('sessions-grid').innerHTML =
-          '<div class="error-msg" style="grid-column:1/-1">Could not load schedule.</div>';
+          `<div class="error-msg" style="grid-column:1/-1">${isNl ? 'Schema kon niet geladen worden.' : 'Could not load schedule.'}</div>`;
       });
   }
 

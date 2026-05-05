@@ -8,8 +8,9 @@ function renderList(races) {
   const list = document.getElementById('list');
   list.innerHTML = '';
 
+  const isNl = (navigator.language || 'en').toLowerCase().startsWith('nl');
   if (!races || races.length === 0) {
-    list.innerHTML = '<div class="error-msg">No data yet.<br>Nog geen data bekend.</div>';
+    list.innerHTML = `<div class="error-msg">${isNl ? 'Nog geen data bekend.' : 'No data yet.'}</div>`;
     return;
   }
 
@@ -63,8 +64,9 @@ function onHomeyReady(Homey) {
         if (height > 0) Homey.setHeight(height);
       })
       .catch(() => {
+        const isNl = (navigator.language || 'en').toLowerCase().startsWith('nl');
         document.getElementById('list').innerHTML =
-          '<div class="error-msg">Could not load calendar.<br>Check app connection.</div>';
+          `<div class="error-msg">${isNl ? 'Kalender kon niet geladen worden.<br>Controleer app verbinding.' : 'Could not load calendar.<br>Check app connection.'}</div>`;
       });
   }
 
