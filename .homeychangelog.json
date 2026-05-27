@@ -61,5 +61,12 @@
   },
   "1.2.5": {
     "en": "Fix: Weekend Schedule widget text is now readable in light mode. Replaced hardcoded white colors with theme-aware colors that adapt to both light and dark mode."
+  },
+  "1.2.6": {
+    "en": "Fixed widget localization: all 7 widgets now correctly display in Dutch for NL users and English for all other languages. Previously, error messages and UI labels were hardcoded in English or mixed Dutch/English regardless of language setting."
+  },
+  "1.3.0": {
+    "en": "New widgets: F1 Qualifying and F1 Sprint Qualifying — show pole position driver with photo, Q1/Q2/Q3 times, and full results grid. New flow trigger: 'A session has ended' — fires after each F1 session (FP1/2/3, Qualifying, Sprint, Race) with session type, round, GP name, and start time tokens. Between race weekends, both widgets show an informative message with the next qualifying date instead of stale results.",
+    "nl": "Nieuwe widgets: F1 Kwalificatie en F1 Sprint Kwalificatie — tonen de pole position rijder met foto, Q1/Q2/Q3 tijden en volledig resultatenoverzicht. Nieuwe flow-trigger: 'Een sessie is afgelopen' — vuurt na elke F1-sessie (VT1/2/3, Kwalificatie, Sprint, Race) met sessietype, ronde, GP-naam en starttijd als tokens. Tussen race weekends tonen beide widgets een informatieve melding met de datum van de volgende kwalificatie in plaats van verouderde resultaten."
   }
 }

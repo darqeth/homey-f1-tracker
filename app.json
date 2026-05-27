@@ -1,6 +1,6 @@
 {
   "id": "com.darqeth.f1tracker",
-  "version": "1.2.6",
+  "version": "1.3.0",
   "compatibility": ">=12.1.0",
   "sdk": 3,
   "name": {
@@ -207,6 +207,38 @@
         "schedule": {
           "method": "GET",
           "path": "/schedule"
+        }
+      }
+    },
+    "f1-qualifying": {
+      "id": "f1-qualifying",
+      "name": {
+        "en": "F1 Qualifying",
+        "nl": "F1 Kwalificatie"
+      },
+      "width": 2,
+      "height": 380,
+      "settings": [],
+      "api": {
+        "qualifying": {
+          "method": "GET",
+          "path": "/qualifying"
+        }
+      }
+    },
+    "f1-sprint-qualifying": {
+      "id": "f1-sprint-qualifying",
+      "name": {
+        "en": "F1 Sprint Qualifying",
+        "nl": "F1 Sprint Kwalificatie"
+      },
+      "width": 2,
+      "height": 380,
+      "settings": [],
+      "api": {
+        "sprint_qualifying": {
+          "method": "GET",
+          "path": "/sprint-qualifying"
         }
       }
     }
@@ -1127,6 +1159,48 @@
           }
         ],
         "id": "race_starts_now"
+      },
+      {
+        "title": {
+          "en": "A session has ended",
+          "nl": "Een sessie is afgelopen"
+        },
+        "icon": "/assets/icon.svg",
+        "tokens": [
+          {
+            "name": "session_type",
+            "type": "string",
+            "title": {
+              "en": "Session type",
+              "nl": "Sessietype"
+            }
+          },
+          {
+            "name": "round",
+            "type": "string",
+            "title": {
+              "en": "Round",
+              "nl": "Ronde"
+            }
+          },
+          {
+            "name": "gp_name",
+            "type": "string",
+            "title": {
+              "en": "Grand Prix",
+              "nl": "Grand Prix"
+            }
+          },
+          {
+            "name": "start_time",
+            "type": "string",
+            "title": {
+              "en": "Start time",
+              "nl": "Starttijd"
+            }
+          }
+        ],
+        "id": "session_ended"
       },
       {
         "title": {

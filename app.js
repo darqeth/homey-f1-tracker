@@ -78,6 +78,9 @@ class F1TrackerApp extends Homey.App {
 
       // --- race finished ---
       race_finished:            this.homey.flow.getTriggerCard('race_finished'),
+
+      // --- session ended (any session type, time-based or API-confirmed) ---
+      session_ended: (() => { try { return this.homey.flow.getTriggerCard('session_ended'); } catch (_) { return null; } })(),
     };
 
     // ---- CONDITIONS ----

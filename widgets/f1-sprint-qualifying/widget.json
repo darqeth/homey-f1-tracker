@@ -1,0 +1,16 @@
+{
+  "id": "f1-sprint-qualifying",
+  "name": {
+    "en": "F1 Sprint Qualifying",
+    "nl": "F1 Sprint Kwalificatie"
+  },
+  "width": 2,
+  "height": 380,
+  "api": {
+    "sprint_qualifying": {
+      "method": "GET",
+      "path": "/sprint-qualifying"
+    }
+  },
+  "settings": []
+}

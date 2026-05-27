@@ -1,0 +1,204 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { overflow: hidden; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--homey-background-color, #111);
+  color: var(--homey-text-color, #fff);
+  font-size: 12px;
+}
+
+#app { display: flex; flex-direction: column; }
+
+/* ── Race header ── */
+#header {
+  padding: 6px 10px 4px;
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ── Hero card ── */
+#hero {
+  display: flex;
+  align-items: stretch;
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+
+#hero-photo-wrap {
+  width: 100px;
+  flex-shrink: 0;
+  position: relative;
+  background: rgba(255,255,255,0.04);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 120px;
+}
+
+#hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+#hero-photo.hidden { display: none; }
+
+#hero-num-fallback {
+  position: absolute;
+  bottom: 6px;
+  font-size: 48px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.07);
+  line-height: 1;
+  letter-spacing: -3px;
+  font-variant-numeric: tabular-nums;
+  font-family: 'Courier New', monospace;
+}
+
+#hero-detail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px 10px 10px;
+  gap: 1px;
+  justify-content: center;
+  min-width: 0;
+}
+
+#hero-pos-badge {
+  font-size: 9px;
+  font-weight: 800;
+  color: #e10600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+#hero-firstname {
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+#hero-lastname {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+#hero-team {
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 1px;
+  margin-bottom: 5px;
+}
+
+#hero-time-row {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+#hero-time {
+  font-size: 22px;
+  font-weight: 900;
+  color: #e10600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  font-family: 'Courier New', monospace;
+}
+
+.time-badge {
+  font-size: 9px;
+  font-weight: 700;
+  background: rgba(225,6,0,0.2);
+  color: #e10600;
+  padding: 2px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+}
+
+/* Verstappen tint */
+#hero.ver-highlight #hero-photo-wrap { background: rgba(255,135,0,0.06); }
+#hero.ver-highlight #hero-time { color: #ff8700; }
+#hero.ver-highlight .time-badge { background: rgba(255,135,0,0.15); color: #ff8700; }
+
+/* ── Results list ── */
+#list { display: flex; flex-direction: column; }
+
+.result-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-left: 3px solid transparent;
+}
+
+.result-row.top1 { background: rgba(232,185,35,0.07); border-left-color: #e8b923; }
+.result-row.top2 { background: rgba(184,196,204,0.05); border-left-color: #b8c4cc; }
+.result-row.top3 { background: rgba(212,115,42,0.06);  border-left-color: #d4732a; }
+
+.result-row.ver-highlight {
+  box-shadow: inset 0 0 0 1px rgba(255,135,0,0.25);
+}
+
+.pos-badge {
+  font-size: 9px; font-weight: 700; padding: 2px 5px; border-radius: 3px;
+  flex-shrink: 0; min-width: 22px; text-align: center; letter-spacing: 0.5px;
+}
+.pos-badge.gold   { background: #e8b923; color: #6b3d00; }
+.pos-badge.silver { background: #b8c4cc; color: #3a4e5c; }
+.pos-badge.bronze { background: #d4732a; color: #66200a; }
+.pos-badge.normal { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
+
+.driver-code {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  min-width: 30px;
+  flex-shrink: 0;
+}
+
+.constructor-name {
+  flex: 1;
+  font-size: 9px;
+  color: rgba(255,255,255,0.35);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lap-time {
+  font-size: 10px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  font-family: 'Courier New', monospace;
+  color: rgba(255,255,255,0.7);
+  flex-shrink: 0;
+}
+
+.result-row.top1 .lap-time,
+.result-row.top2 .lap-time,
+.result-row.top3 .lap-time { color: #fff; }
+
+.error-msg {
+  padding: 20px 12px;
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.5;
+}

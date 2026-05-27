@@ -1,0 +1,16 @@
+{
+  "id": "f1-qualifying",
+  "name": {
+    "en": "F1 Qualifying",
+    "nl": "F1 Kwalificatie"
+  },
+  "width": 2,
+  "height": 380,
+  "api": {
+    "qualifying": {
+      "method": "GET",
+      "path": "/qualifying"
+    }
+  },
+  "settings": []
+}
