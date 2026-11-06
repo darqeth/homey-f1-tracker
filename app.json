@@ -1,6 +1,6 @@
 {
   "id": "com.darqeth.f1tracker",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "compatibility": ">=12.1.0",
   "sdk": 3,
   "name": {
@@ -235,6 +235,90 @@
           "path": "/sprint-qualifying"
         }
       }
+    },
+    "f1-predictor": {
+      "id": "f1-predictor",
+      "name": {
+        "en": "F1 Championship Predictor",
+        "nl": "F1 Kampioenschapsvoorspeller"
+      },
+      "width": 2,
+      "height": 260,
+      "api": {
+        "prediction": {
+          "method": "GET",
+          "path": "/prediction"
+        }
+      },
+      "settings": [
+        {
+          "id": "championship",
+          "type": "dropdown",
+          "title": {
+            "en": "Championship",
+            "nl": "Kampioenschap"
+          },
+          "value": "drivers",
+          "values": [
+            {
+              "id": "drivers",
+              "title": {
+                "en": "Drivers",
+                "nl": "Coureurs"
+              }
+            },
+            {
+              "id": "constructors",
+              "title": {
+                "en": "Constructors",
+                "nl": "Constructeurs"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "f1-predictor-podium": {
+      "id": "f1-predictor-podium",
+      "name": {
+        "en": "F1 Title Odds Top 3",
+        "nl": "F1 Titelkansen Top 3"
+      },
+      "width": 2,
+      "height": 185,
+      "api": {
+        "prediction": {
+          "method": "GET",
+          "path": "/prediction"
+        }
+      },
+      "settings": [
+        {
+          "id": "championship",
+          "type": "dropdown",
+          "title": {
+            "en": "Championship",
+            "nl": "Kampioenschap"
+          },
+          "value": "drivers",
+          "values": [
+            {
+              "id": "drivers",
+              "title": {
+                "en": "Drivers",
+                "nl": "Coureurs"
+              }
+            },
+            {
+              "id": "constructors",
+              "title": {
+                "en": "Constructors",
+                "nl": "Constructeurs"
+              }
+            }
+          ]
+        }
+      ]
     }
   },
   "flow": {

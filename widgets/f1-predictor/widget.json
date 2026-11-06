@@ -1,4 +1,5 @@
 {
+  "id": "f1-predictor",
   "name": {
     "en": "F1 Championship Predictor",
     "nl": "F1 Kampioenschapsvoorspeller"
@@ -15,11 +16,26 @@
     {
       "id": "championship",
       "type": "dropdown",
-      "title": { "en": "Championship", "nl": "Kampioenschap" },
+      "title": {
+        "en": "Championship",
+        "nl": "Kampioenschap"
+      },
       "value": "drivers",
       "values": [
-        { "id": "drivers", "title": { "en": "Drivers", "nl": "Coureurs" } },
-        { "id": "constructors", "title": { "en": "Constructors", "nl": "Constructeurs" } }
+        {
+          "id": "drivers",
+          "title": {
+            "en": "Drivers",
+            "nl": "Coureurs"
+          }
+        },
+        {
+          "id": "constructors",
+          "title": {
+            "en": "Constructors",
+            "nl": "Constructeurs"
+          }
+        }
       ]
     }
   ]

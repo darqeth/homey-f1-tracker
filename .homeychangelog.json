@@ -76,5 +76,9 @@
   "1.4.1": {
     "en": "New: Title Odds Top 3 widget, a compact podium with the three most likely champions (drivers or constructors). Refreshed widget previews and a smaller app download.",
     "nl": "Nieuw: Titelkansen Top 3-widget, een compact podium met de drie grootste kanshebbers op de titel (coureurs of constructeurs). Vernieuwde widget-previews en een kleinere app-download."
+  },
+  "1.4.2": {
+    "en": "Fix: the Championship Predictor and Title Odds Top 3 widgets are now available in the dashboard widget list.",
+    "nl": "Fix: de Kampioenschapsvoorspeller- en Titelkansen Top 3-widgets staan nu in de lijst met dashboard-widgets."
   }
 }
