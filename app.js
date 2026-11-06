@@ -5,6 +5,7 @@ const F1Api = require('./lib/f1-api');
 const TimeUtil = require('./lib/time');
 const F1Scheduler = require('./lib/f1-scheduler');
 const LogicSync = require('./lib/logic-sync');
+const ChampionshipPredictor = require('./lib/predictor');
 
 class F1TrackerApp extends Homey.App {
   async onInit() {
@@ -14,6 +15,7 @@ class F1TrackerApp extends Homey.App {
     this.f1Api = new F1Api(this.homey, this.time);
     this.scheduler = new F1Scheduler(this.homey, this.f1Api, this.time);
     this.logicSync = new LogicSync(this.homey, this.f1Api, this.time);
+    this.predictor = new ChampionshipPredictor(this.f1Api, this.time);
 
     this.roundDevices = new Set();
 
@@ -238,6 +240,22 @@ class F1TrackerApp extends Homey.App {
         leader_points: first.points || '',
         second_name: second.name || '',
         second_points: second.points || '',
+      };
+    });
+
+    const getPrediction = this.homey.flow.getActionCard('get_championship_prediction');
+    getPrediction.registerRunListener(async () => {
+      const prediction = await this.predictor.predict();
+      if (!prediction) return {};
+      const [first = {}, second = {}] = prediction.drivers;
+      return {
+        favourite_name: first.name || '',
+        favourite_probability: first.probability || 0,
+        favourite_projected_points: first.projectedPoints || 0,
+        second_name: second.name || '',
+        second_probability: second.probability || 0,
+        races_remaining: prediction.racesRemaining,
+        points_remaining: prediction.pointsRemaining,
       };
     });
   }

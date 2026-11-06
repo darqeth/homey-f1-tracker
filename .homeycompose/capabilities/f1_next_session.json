@@ -1,0 +1,11 @@
+{
+  "type": "string",
+  "title": {
+    "en": "Next session",
+    "nl": "Volgende sessie"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "icon": "/assets/icon.svg"
+}

@@ -1,0 +1,19 @@
+{
+  "title": {
+    "en": "Get championship prediction",
+    "nl": "Haal kampioenschapsvoorspelling op"
+  },
+  "hint": {
+    "en": "Simulates the rest of the season 10,000 times based on current points, form and circuit history.",
+    "nl": "Simuleert de rest van het seizoen 10.000 keer op basis van huidige punten, vorm en circuithistorie."
+  },
+  "tokens": [
+    { "name": "favourite_name",             "type": "string", "title": { "en": "Favourite",                  "nl": "Favoriet" } },
+    { "name": "favourite_probability",      "type": "number", "title": { "en": "Favourite title chance (%)", "nl": "Titelkans favoriet (%)" } },
+    { "name": "favourite_projected_points", "type": "number", "title": { "en": "Favourite projected points", "nl": "Verwachte punten favoriet" } },
+    { "name": "second_name",                "type": "string", "title": { "en": "Main challenger",            "nl": "Grootste uitdager" } },
+    { "name": "second_probability",         "type": "number", "title": { "en": "Challenger title chance (%)", "nl": "Titelkans uitdager (%)" } },
+    { "name": "races_remaining",            "type": "number", "title": { "en": "Races remaining",            "nl": "Resterende races" } },
+    { "name": "points_remaining",           "type": "number", "title": { "en": "Points still available",     "nl": "Nog te verdelen punten" } }
+  ]
+}

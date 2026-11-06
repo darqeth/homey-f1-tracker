@@ -1,0 +1,104 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { overflow: hidden; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--homey-background-color, #111);
+  color: var(--homey-text-color, #fff);
+  font-size: 12px;
+}
+
+#header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 2px solid #e10600;
+}
+
+#title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #e10600;
+  text-transform: uppercase;
+}
+
+#subtitle, #footnote {
+  font-size: 10px;
+  opacity: 0.5;
+}
+
+#rows { padding: 4px 10px; }
+
+.row {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+}
+
+.row:last-child { border-bottom: none; }
+
+.code {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  align-self: center;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.team, .detail { grid-column: 2; }
+
+.team { font-size: 10px; opacity: 0.5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.pct {
+  grid-column: 3;
+  grid-row: 1 / 3;
+  align-self: center;
+  font-weight: 800;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  min-width: 52px;
+  text-align: right;
+}
+
+.bar {
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(128, 128, 128, 0.18);
+  overflow: hidden;
+  margin: 3px 0;
+}
+
+.bar > span {
+  display: block;
+  height: 100%;
+  background: #e10600;
+  border-radius: 3px;
+}
+
+.pts { font-size: 10px; opacity: 0.6; font-variant-numeric: tabular-nums; }
+
+.row.out { opacity: 0.45; }
+.row.ver .code, .row.ver .pct { color: #ff8700; }
+.row.ver .bar > span { background: #ff8700; }
+
+.champion {
+  font-size: 9px;
+  font-weight: 700;
+  color: #fff;
+  background: #e10600;
+  border-radius: 3px;
+  padding: 1px 4px;
+  margin-left: 4px;
+  vertical-align: 1px;
+}
+
+#footnote { padding: 0 10px 8px; }
+
+.error-msg { padding: 16px 0; text-align: center; opacity: 0.6; }

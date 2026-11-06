@@ -2,5 +2,18 @@
   "app": {
     "name": "F1 Tracker Pro",
     "description": "F1 Tracker Pro brengt Formule 1 naar je Homey op een manier die echt iets doet.\n\nBouw Advanced Flows die afgaan minuten of uren vóór elke sessie — vrije trainingen, kwalificatie, sprint kwalificatie, sprint en race. Een speciale 'race afgelopen'-trigger vuurt zodra de winnaar bevestigd is, zodat je racedagautomatiseringen of aankondigingen kunt bouwen.\n\nDashboard-widgets inbegrepen:\n• Flipboard-afteltimer tot de volgende race\n• Volledige seizoenskalender met goud/zilver/brons podiummedailles\n• Rijders- en constructeurskampioenschap\n• Visuele podium-widgets voor de top 3\n\nAlle racedata wordt automatisch gesynchroniseerd naar Homey Logic-variabelen zodat je per ronde aangepaste dashboard-tiles kunt bouwen.\n\nOndersteunt Engels en Nederlands. Racedata via Jolpica (Ergast-compatibele API).\n\nGemaakt door Mark — https://www.byhim.nl"
+  },
+  "devices": {
+    "upcoming_race": "Aankomende race",
+    "no_upcoming_race": "Geen aankomende race dit seizoen"
+  },
+  "sessions": {
+    "fp1": "Vrije training 1",
+    "fp2": "Vrije training 2",
+    "fp3": "Vrije training 3",
+    "sprint_quali": "Sprintkwalificatie",
+    "sprint": "Sprint",
+    "qualifying": "Kwalificatie",
+    "race": "Race"
   }
 }

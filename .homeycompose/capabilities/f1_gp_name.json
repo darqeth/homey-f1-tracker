@@ -1,0 +1,11 @@
+{
+  "type": "string",
+  "title": {
+    "en": "Grand Prix",
+    "nl": "Grand Prix"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "icon": "/assets/icon.svg"
+}

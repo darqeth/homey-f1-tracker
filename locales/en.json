@@ -2,5 +2,18 @@
   "app": {
     "name": "F1 Tracker Pro",
     "description": "F1 Tracker Pro brings Formula 1 to your Homey in a way that actually makes sense.\n\nBuild Advanced Flows that trigger minutes or hours before every session — free practice, qualifying, sprint qualifying, sprint and race. A dedicated 'race finished' trigger fires as soon as the winner is confirmed, so you can automate race-day announcements or celebrations.\n\nDashboard widgets included:\n• Flip-clock countdown to the next race\n• Full season calendar with gold/silver/bronze podium badges\n• Driver and constructor championship standings\n• Visual podium widgets for the top 3\n\nAll race data is automatically synced to Homey Logic variables so you can build custom tiles for every round in the season.\n\nSupports English and Dutch. Race data provided by Jolpica (Ergast-compatible API).\n\nMade by Mark — https://www.byhim.nl"
+  },
+  "devices": {
+    "upcoming_race": "Upcoming Race",
+    "no_upcoming_race": "No upcoming race in this season"
+  },
+  "sessions": {
+    "fp1": "Practice 1",
+    "fp2": "Practice 2",
+    "fp3": "Practice 3",
+    "sprint_quali": "Sprint Qualifying",
+    "sprint": "Sprint",
+    "qualifying": "Qualifying",
+    "race": "Race"
   }
 }

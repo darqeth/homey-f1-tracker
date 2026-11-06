@@ -22,6 +22,7 @@ Set up Advanced Flows that fire before any session type:
 - Get next session / next race details (includes countdown string, circuit, country, city)
 - Get driver standings top 2
 - Get constructor standings top 2
+- Get championship prediction (favourite, title chance, projected points)
 - Force refresh API cache
 
 ### Dashboard widgets
@@ -33,6 +34,10 @@ Set up Advanced Flows that fire before any session type:
 | F1 Constructeurs / Constructors | Constructor championship standings |
 | F1 Rijders Podium | Visual podium — top 3 drivers |
 | F1 Constructeurs Podium | Visual podium — top 3 constructors |
+| F1 Championship Predictor | Title odds and projected points from 10,000 season simulations (drivers or constructors) |
+
+### Upcoming Race device
+Add the *Upcoming Race* device to expose the next GP name, circuit, location, round, weekend dates, every session start time, next session and countdown as device capabilities, for Dashboard Studio and other device-based dashboards.
 
 ### Logic variables (dashboard tiles)
 Automatically synced on every refresh:
@@ -45,7 +50,7 @@ Automatically synced on every refresh:
 
 | Setting | Default | Description |
 |---|---|---|
-| Season | current | Current or a specific year |
+| Season | current | Current or previous season |
 | Cache duration | 6h | How long the race schedule is cached |
 | Poll interval | 30s | How often flows are checked |
 | Fast poll window | 10min | Switches to 5s polling when a session is near |

@@ -16,17 +16,10 @@
         }
       },
       {
-        "id": "2026",
+        "id": "previous",
         "label": {
-          "en": "2026",
-          "nl": "2026"
-        }
-      },
-      {
-        "id": "2025",
-        "label": {
-          "en": "2025",
-          "nl": "2025"
+          "en": "Previous season",
+          "nl": "Vorig seizoen"
         }
       }
     ]

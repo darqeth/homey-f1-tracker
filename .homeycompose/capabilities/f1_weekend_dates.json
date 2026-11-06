@@ -1,0 +1,11 @@
+{
+  "type": "string",
+  "title": {
+    "en": "Weekend",
+    "nl": "Weekend"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "icon": "/assets/icon.svg"
+}

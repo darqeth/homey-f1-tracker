@@ -27,72 +27,21 @@ const COUNTRY_SHORT = {
   'UAE': 'Abu Dhabi',
 };
 
-const CIRCUIT_SVG = {
-  albert_park:   'melbourne-2',
-  bahrain:       'bahrain-3',
-  jeddah:        'jeddah-1',
-  suzuka:        'suzuka-2',
-  shanghai:      'shanghai-1',
-  miami:         'miami-1',
-  imola:         'imola-3',
-  monaco:        'monaco-6',
-  villeneuve:    'montreal-1',
-  silverstone:   'silverstone-8',
-  hungaroring:   'hungaroring-3',
-  spa:           'spa-francorchamps-4',
-  zandvoort:     'zandvoort-5',
-  monza:         'monza-7',
-  baku:          'baku-1',
-  marina_bay:    'marina-bay-4',
-  americas:      'austin-1',
-  rodriguez:     'mexico-city-1',
-  interlagos:    'interlagos-2',
-  las_vegas:     'las-vegas-1',
-  yas_marina:    'yas-marina-2',
-  losail:        'lusail-1',
-  red_bull_ring: 'spielberg-3',
-  catalunya:     'catalunya-6',
-  kyalami:       'kyalami-1',
-};
-
-const SVG_BASE = 'https://raw.githubusercontent.com/julesr0y/f1-circuits-svg/main/circuits/minimal/black/';
-
 function flagEmoji(country) {
   const code = COUNTRY_FLAG[country];
   if (!code) return '';
   return [...code].map(c => String.fromCodePoint(0x1F1E6 - 65 + c.charCodeAt(0))).join('');
 }
 
-function loadCircuitSvg(circuitId, isDutch) {
+function renderCircuit(circuitId, isDutch) {
   const container = document.getElementById('circuit-container');
-  if (!container) return;
-
-  const svgName = CIRCUIT_SVG[circuitId];
-  if (!svgName) return;
+  const circuit = CIRCUITS[circuitId];
+  if (!container || !circuit) return;
 
   const color = isDutch ? '#ff8700' : '#e10600';
-
-  fetch(SVG_BASE + svgName + '.svg')
-    .then(res => { if (!res.ok) throw new Error(); return res.text(); })
-    .then(svgText => {
-      const svg = svgText
-        .replace(/<svg([^>]*)>/, (_, attrs) => {
-          const wm = attrs.match(/width="(\d+)"/);
-          const hm = attrs.match(/height="(\d+)"/);
-          const w = wm ? wm[1] : '500';
-          const h = hm ? hm[1] : '500';
-          const viewBox = attrs.includes('viewBox') ? '' : ` viewBox="0 0 ${w} ${h}"`;
-          const cleaned = attrs.replace(/ width="[^"]*"/, '').replace(/ height="[^"]*"/, '');
-          return `<svg id="circuit-svg"${cleaned}${viewBox}>`;
-        })
-        .replace(/stroke:\s*#(?:000000|000)\b/g, `stroke: ${color}`)
-        .replace(/stroke:\s*black\b/gi,           `stroke: ${color}`)
-        .replace(/fill="(?!none)[^"]*"/g,          `fill="${color}"`)
-        .replace(/fill:\s*#(?:000000|000)\b/g,     `fill: ${color}`)
-        .replace(/fill:\s*black\b/gi,              `fill: ${color}`);
-      container.innerHTML = svg;
-    })
-    .catch(() => {});
+  container.innerHTML =
+    `<svg id="circuit-svg" viewBox="0 0 ${circuit.w} ${circuit.h}">` +
+    `<path d="${circuit.d}" fill="none" stroke="${color}" stroke-linejoin="round" stroke-linecap="round"/></svg>`;
 }
 
 function renderSchedule(data) {
@@ -125,8 +74,7 @@ function renderSchedule(data) {
       first.toLocaleDateString(locale, { day: '2-digit' }) + ' - ' + fmtDay(last);
   }
 
-  // Circuit SVG
-  loadCircuitSvg(data.circuitId, data.isDutch);
+  renderCircuit(data.circuitId, data.isDutch);
 
   // Sessions grid
   const grid = document.getElementById('sessions-grid');
