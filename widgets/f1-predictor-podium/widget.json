@@ -1,0 +1,41 @@
+{
+  "name": {
+    "en": "F1 Title Odds Top 3",
+    "nl": "F1 Titelkansen Top 3"
+  },
+  "width": 2,
+  "height": 185,
+  "api": {
+    "prediction": {
+      "method": "GET",
+      "path": "/prediction"
+    }
+  },
+  "settings": [
+    {
+      "id": "championship",
+      "type": "dropdown",
+      "title": {
+        "en": "Championship",
+        "nl": "Kampioenschap"
+      },
+      "value": "drivers",
+      "values": [
+        {
+          "id": "drivers",
+          "title": {
+            "en": "Drivers",
+            "nl": "Coureurs"
+          }
+        },
+        {
+          "id": "constructors",
+          "title": {
+            "en": "Constructors",
+            "nl": "Constructeurs"
+          }
+        }
+      ]
+    }
+  ]
+}

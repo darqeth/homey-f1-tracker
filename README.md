@@ -34,6 +34,7 @@ Set up Advanced Flows that fire before any session type:
 | F1 Constructeurs / Constructors | Constructor championship standings |
 | F1 Rijders Podium | Visual podium — top 3 drivers |
 | F1 Constructeurs Podium | Visual podium — top 3 constructors |
+| F1 Title Odds Top 3 | Podium with the three most likely champions |
 | F1 Championship Predictor | Title odds and projected points from 10,000 season simulations (drivers or constructors) |
 
 ### Upcoming Race device
